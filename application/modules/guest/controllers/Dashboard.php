@@ -44,4 +44,10 @@ class Dashboard extends APP_Controller
         $this->M_guest->insert_guest($data);
         redirect('guest/dashboard');
     }
+
+    public function sukses()
+    {
+        $data['page_active'] = 'dashboard';
+        $this->template->build($this->module . '/v_sukses', $data);
+    }
 }
