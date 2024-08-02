@@ -16,6 +16,10 @@ class Dashboard extends APP_Controller
         $this->asset->set_theme($this->config->item('theme'));
 
         $this->load->model('M_guest');
+
+        $this->load->helper('nohp');
+        $this->load->helper('text');
+        $this->load->library('user_agent');
     }
 
     public function index()
