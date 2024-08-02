@@ -49,8 +49,15 @@
 
         <li class="menu-item <?= $page_active == 'pengajuan' ? 'active' : '' ?>">
           <a class="menu-link menu-color" href="<?= site_url('staff/Pengajuan'); ?>">
-            <i class="bi bi-envelope-exclamation"></i>
+            <i class="bi bi-inboxes-fill"></i>
             <span class="title">Pengajuan</span>
+          </a>
+        </li>
+
+        <li class="menu-item <?= $page_active == 'akun' ? 'active' : '' ?>">
+          <a class="menu-link menu-color" href="<?= site_url('staff/kelolaAkun'); ?>">
+            <i class="bi bi-person-gear"></i>
+            <span class="title">Kelola Akun</span>
           </a>
         </li>
 

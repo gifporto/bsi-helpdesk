@@ -21,4 +21,9 @@ class Dashboard extends APP_Controller
         $this->template->build($this->module . '/v_dashboard', $data);
     }
 
+    public function sukses(){
+        $data['page_active'] = 'dashboard';
+        $this->template->build($this->module . '/v_sukses', $data);
+    }
+
 }

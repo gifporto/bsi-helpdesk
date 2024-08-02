@@ -38,7 +38,7 @@
         </div>
       </div>
       <footer class="mx-4 my-4 text-right">
-        <a class="btn btn-round btn-custom" type="submit" href="">Submit</a>
+        <a class="btn btn-round btn-custom" type="submit" onclick="window.location.href='<?= site_url('guest/Dashboard/sukses'); ?>'">Submit</a>
       </footer>
     </div>
   </div>

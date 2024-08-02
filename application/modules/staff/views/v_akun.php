@@ -1,78 +1,25 @@
-<!-- table -->
-<div class="col-lg-12">
+<div class="col-12">
     <div class="card shadow-2">
         <div class="card-body">
 
-            <div class="mb-2 d-flex justify-content-between">
-                <!-- <div class="btn-toolbar d-flex flex-wrap align-items-center">
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Status Baca</button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <a class="dropdown-item" href="#">sudah dibaca</a>
-                            <a class="dropdown-item" href="#">belum dibaca</a>
-                        </div>
+            <div class="media-list media-list-sm media-list-hover media-list-divided ">
+                <div class="flexbox mb-20">
+                    <div class="lookup">
+                        <input class="w-200px" type="text" data-provide="media-search" placeholder="search..">
                     </div>
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Urgensi</button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <a class="dropdown-item" href="#">Penting</a>
-                            <a class="dropdown-item" href="#">Rahasia</a>
-                            <a class="dropdown-item" href="#">Biasa</a>
-                        </div>
+                </div>
+                <div class="media media-single">
+                    <div class="media-body" onclick="window.location.href='<?= site_url('pt/Prodi/detailprodi'); ?>'">
+                        <h6 class="fw-700">Taufiq Aditya Putra</h6>
+                        <small class="text-fader">Biro Sistem Informasi Unit 1</small>
                     </div>
-                    <div class="btn-group btn-group-sm m-1">
-                        <input type="date" class="btn form-control">
+                    <div class="media-right">
+                        <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-success"><i class="fa fa-pencil"></i></a>
+                        <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-danger"><i class="fa fa-trash"></i></a>
                     </div>
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Asal Surat</button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <input type="text" class="form-control mb-2" placeholder="Cari opsi...">
-                            <a class="dropdown-item" href="#">Asal Surat 1</a>
-                            <a class="dropdown-item" href="#">Asal Surat 2</a>
-                            <a class="dropdown-item" href="#">Asal Surat 3</a>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="ml-auto">
-                    <a class="btn btn-sm btn-round btn-custom" data-toggle="modal" data-target="#modal-default" href="">+ Tambah</a>
                 </div>
             </div>
 
-            <table class="table table-separated table-striped table-responsive-sm" data-provide="datatables"  data-scroll-collapse="true" cellspacing="0">
-                <thead class="bg-color-primary1">
-                    <tr>
-                        <th class="font-weight-bold">Mitra</th>
-                        <th class="font-weight-bold">Dana Maks</th>
-                        <th class="font-weight-bold">Sasaran</th>
-                        <th class="font-weight-bold">Target</th>
-                        <th class="font-weight-bold">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="font-weight-bold" onclick="window.location.href='<?= site_url('unit_kerja/SuratMasuk/detailsuratmasuk'); ?>'">
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Rp 7,133,130</td>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-secondary"><i class="fa fa-file"></i></a>
-                        </td>
-
-                    </tr>
-                    <tr class="font-weight-bold" onclick="window.location.href='<?= site_url('unit_kerja/SuratMasuk/detailsuratmasuk'); ?>'">
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Rp 7,133,130</td>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>Lorem ipsum dolor sit amet.</td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-secondary"><i class="fa fa-file"></i></a>
-                        </td>
-
-                    </tr>
-                </tbody>
-            </table>
-        
         </div>
     </div>
 </div>
