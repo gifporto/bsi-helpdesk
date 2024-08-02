@@ -75,7 +75,7 @@ $db['default'] = array(
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'aisiyah',
+	'database' => 'bsi-helpdesk',
 
 	'dbdriver' => 'mysqli',
 	'port' => '3306',
