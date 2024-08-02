@@ -42,7 +42,7 @@ class Dashboard extends APP_Controller
         }
 
         $this->M_guest->insert_guest($data);
-        redirect('guest/dashboard');
+        redirect('guest/dashboard/sukses');
     }
 
     public function sukses()
