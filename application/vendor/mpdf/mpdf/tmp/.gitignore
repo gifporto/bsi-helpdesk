@@ -2,3 +2,8 @@
 !.gitignore
 !ttfontdata/
 !ttfontdata/.gitkeep
+
+# Ignore log files and the logs directory
+application/logs/
+!application/logs/index.html
+
