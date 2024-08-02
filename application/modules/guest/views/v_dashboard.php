@@ -1,3 +1,15 @@
+<?php
+// sediakan nohp target
+$nohp = hp('085322471629');
+// atur pesan dengan helper text urlencode
+$message = '&text=' . urlencode('Pengajuan anda sedang dalam proses');
+// cek user_agent / device yang digunakan user
+// kalau mobile maka pakai api.whatsapp.com
+if ($this->agent->is_mobile()) $linkWA = 'https://api.whatsapp.com/send?phone=' . $nohp . $message;
+// tapi kalau desktop pakai web.whatsapp.com
+else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
+?>
+
 <div class="col-12">
     <div class="card shadow-2">
         <form class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>" method="post">
