@@ -1,0 +1,32 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-04-02 02:25:09 --> 404 Page Not Found: verifikasi
+ERROR - 2024-04-02 02:25:25 --> 404 Page Not Found: ../modules/unit_kerja/controllers/DaftarSuratMasuk/index
+ERROR - 2024-04-02 02:26:30 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 02:26:46 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Dashboard/index
+ERROR - 2024-04-02 02:36:54 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 02:37:50 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 03:25:10 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 03:25:13 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 03:25:27 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:26:10 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:26:16 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:28:21 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:28:54 --> 404 Page Not Found: verifikasi
+ERROR - 2024-04-02 03:28:59 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:29:06 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:30:46 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/tindakansuratmasuk
+ERROR - 2024-04-02 03:30:47 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:31:25 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:33:00 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:36:11 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 03:36:13 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 03:39:53 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:40:00 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/tindakansuratmasuk
+ERROR - 2024-04-02 03:40:02 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:41:45 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 03:41:49 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/daftarsuratmasuk
+ERROR - 2024-04-02 04:50:05 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 05:20:42 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-02 05:48:48 --> 404 Page Not Found: verifikasi
+ERROR - 2024-04-02 06:32:23 --> 404 Page Not Found: unit_kerja

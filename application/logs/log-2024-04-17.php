@@ -1,0 +1,35 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-04-17 10:28:36 --> 404 Page Not Found: widget
+ERROR - 2024-04-17 11:28:10 --> 404 Page Not Found: dashboard
+ERROR - 2024-04-17 11:28:13 --> 404 Page Not Found: dashboard
+ERROR - 2024-04-17 11:53:46 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 12:02:55 --> 404 Page Not Found: kantor_univ
+ERROR - 2024-04-17 12:03:21 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 12:12:21 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 12:33:48 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 12:37:26 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 12:41:29 --> 404 Page Not Found: ../modules/kantor_univ/controllers/SuratMasuk/tembusan
+ERROR - 2024-04-17 15:13:04 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-17 15:13:13 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Dashboard/index.html
+ERROR - 2024-04-17 15:14:36 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-17 15:17:46 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-17 15:18:38 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Login/index
+ERROR - 2024-04-17 15:19:19 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Login/login
+ERROR - 2024-04-17 15:19:22 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Login/login
+ERROR - 2024-04-17 15:19:55 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:20:02 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:20:37 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:22:08 --> 404 Page Not Found: login
+ERROR - 2024-04-17 15:22:48 --> 404 Page Not Found: ../modules/unit_kerja/controllers/Login/index
+ERROR - 2024-04-17 15:23:07 --> 404 Page Not Found: login
+ERROR - 2024-04-17 15:29:38 --> 404 Page Not Found: ../modules/auth/controllers/Auth/login_form
+ERROR - 2024-04-17 15:29:43 --> 404 Page Not Found: ../modules/auth/controllers/Auth/login_form_
+ERROR - 2024-04-17 15:32:22 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:32:57 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:33:03 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:33:42 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:34:16 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:34:18 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:34:35 --> 404 Page Not Found: assets
+ERROR - 2024-04-17 15:35:39 --> 404 Page Not Found: assets

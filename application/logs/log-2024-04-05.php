@@ -1,0 +1,33 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-04-05 01:08:58 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:08:59 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:08:59 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:44:13 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:45:27 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:45:50 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:45:50 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 01:46:15 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:15 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:16 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:16 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:16 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:16 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:17 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:17 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:17 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:18 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:18 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:18 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:20 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:46:27 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 01:47:57 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 02:13:01 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 02:15:21 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 02:52:56 --> 404 Page Not Found: pda
+ERROR - 2024-04-05 04:21:59 --> 404 Page Not Found: unit_kerja
+ERROR - 2024-04-05 05:51:07 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 05:51:09 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 05:51:11 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 05:51:11 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
+ERROR - 2024-04-05 05:51:29 --> 404 Page Not Found: ../modules/unit_kerja/controllers/SuratMasuk/opsi_disposisi.php
