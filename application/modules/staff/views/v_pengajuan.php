@@ -43,7 +43,13 @@
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
                     <tr>
-                        <td><?= $guest['created_at'] ?></td>
+                        <td>
+                            <?php
+                                $date = new DateTime($guest['created_at']);
+                                $formatted_date = $date->format('d F Y H:i');
+                                ?>
+                            <?= $formatted_date ?>
+                        </td>
                         <td><?= $guest['nama'] ?></td>
                         <td><?= $guest['instansi'] ?></td>
                         <td><?= $guest['keperluan'] ?></td>
