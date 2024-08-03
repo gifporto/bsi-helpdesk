@@ -55,6 +55,7 @@
                         <td><?= $guest['keperluan'] ?></td>
                         <td>
                             <div class="media-right">
+
                                 <div class="btn btn-sm btn-bold btn-round btn-flat 
                                     <?php
                                     if ($guest['status'] == 'Selesai') {
@@ -68,6 +69,19 @@
                             </div>
                         </td>
                         <td>
+                            <?php
+                                $nohp = hp('085322471629');
+                                $message = '&text=' . urlencode('Halo! ajuan anda sedang kami proses');
+                                $linkWA = $this->agent->is_mobile()
+                                    ? 'https://api.whatsapp.com/send?phone=' . $nohp . $message
+                                    : 'whatsapp://send?phone=' . $nohp . $message;
+                                ?>
+
+                            <?php if ($guest['status'] != 'Selesai') : ?>
+                            <a class="btn btn-success btn-sm rounded" target="_blank" href="<?= $linkWA ?>">Chat WA</a>
+                            <?php endif; ?>
+
+
                             <a href="#" data-toggle="modal"
                                 data-target="<?= $guest['status'] == 'Selesai' ? '#modal-ubah-' : '#modal-detail-' ?><?= $guest['id'] ?>"
                                 class="btn btn-square btn-round <?= $guest['status'] == 'Selesai' ? 'btn-info' : 'btn-success' ?>">
