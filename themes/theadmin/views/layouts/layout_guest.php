@@ -27,6 +27,8 @@
     <link rel="apple-touch-icon" href="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" />
     <link rel="icon" href="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" />
 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 
     <style>
     #v_internal,
