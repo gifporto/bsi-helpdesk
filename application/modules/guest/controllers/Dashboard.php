@@ -56,4 +56,10 @@ class Dashboard extends APP_Controller
         $data['page_active'] = 'dashboard';
         $this->template->build($this->module . '/v_sukses', $data);
     }
+
+    public function login()
+    {
+        $data['page_active'] = 'login';
+        $this->template->build($this->module . '/v_login', $data);
+    }
 }

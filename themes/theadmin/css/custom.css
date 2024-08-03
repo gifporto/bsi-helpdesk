@@ -4,15 +4,12 @@
   --primary-color: #084979;
   --primary1-color: #f6f8fa;
   --primary2-color: #FECA06;
+  --primary3-color: rgba(0, 102, 255, 0.05);
+  --primary4-color: rgba(255, 208, 0, 0.05);
 }
 
 body {
-  background: white;
-}
-
-#donut-pie {
-  max-width: 400px; /* Atur lebar sesuai kebutuhan */
-  max-height: 400px; /* Atur tinggi sesuai kebutuhan */
+  background: var(--primary1-color);
 }
 
 .custom-legend-item {
@@ -121,12 +118,14 @@ body {
 .card-custom {
   border-radius: 16px !important;
   cursor: pointer;
+  /* border: 1px solid #f1f2f3; */
   transition: background-color 0.3s ease;
+  background-color: white;
 }
 
 .card-custom:hover {
   border-radius: 16px !important;
-  background-color: rgba(0, 102, 255, 0.05) !important;
+  background-color: var(--primary4-color) !important;
 }
 
 /* checkbox kuesioner */
@@ -222,7 +221,7 @@ body {
 
 /* tombol pagination */
 .dataTables_wrapper .dataTables_paginate .page-link {
-  border-radius: 50px !important;
+  border-radius: 8px !important;
 }
 
 /* angka halaman pagination */
@@ -230,6 +229,10 @@ body {
   background-color: var(--primary-color) !important;
   color: #fff; /* Warna teks halaman aktif */
   border: none; /* Hilangkan border */
+}
+
+.lookup input {
+  border-radius: 8px;
 }
 
 thead {
@@ -263,7 +266,7 @@ thead {
 }
 
 .table tbody tr:hover {
-  background-color: rgba(255, 208, 0, 0.05) !important;
+  background-color: var(--primary4-color) !important;
   /* cursor: pointer; */
 }
 
@@ -287,6 +290,7 @@ thead {
   color: var(--primary-color) !important;
 } */
 
+/* warna bg sidebar saat tampilan mobile */
 .app-backdrop {
   background-color: rgba(0, 0, 0, 0.274);
 }
@@ -298,10 +302,10 @@ thead {
   background-color: var(--primary1-color) !important;
 }
 
-/* border kiri menu */
+/* border kiri menu saat menu aktif*/
 .sidebar .menu.menu-bordery > .menu-item.active > .menu-link::before,
 .sidebar .menu.menu-bordery > .menu-item:hover > .menu-link::before {
-  background-color: var(--primary2-color) !important;
+  background-color: var(--primary-color) !important;
   margin: 5px !important;
   border-radius: 10rem !important;
 }
@@ -316,20 +320,23 @@ thead {
   border-color: var(--primary-color) !important;
 }
 
+/* menu sidebar aktif */
 .sidebar.sidebar-light .menu > .menu-item.active > .menu-link {
   color: var(--dark-color) !important;
   background-color: white !important;
   font-weight: 600 !important;
-  margin: 0px 5px !important;
   border-radius: 8px !important;
   -webkit-box-shadow: 4px 0 5px rgba(0, 0, 0, 0.02) !important;
   box-shadow: 4px 0 5px rgba(0, 0, 0, 0.02) !important;
   pointer-events: none; /* Menonaktifkan hover */
 }
 
+/* menu sidebar hover */
 .sidebar.sidebar-light .menu > .menu-item:hover:not(.active) > .menu-link {
-  background-color: rgba(0, 102, 255, 0.05) !important;
+  background-color: var(--primary4-color) !important;
+  color: var(--dark-color) !important;
   border-radius: 8px !important;
+  font-weight: 600 !important;
 }
 
 .sidebar.sidebar-light .menu-submenu {

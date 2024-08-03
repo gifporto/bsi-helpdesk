@@ -27,6 +27,8 @@
     <link rel="apple-touch-icon" href="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" />
     <link rel="icon" href="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" />
 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 
     <style>
     #v_internal,
@@ -49,7 +51,7 @@
             <div class="topbar-right">
                 <form action="/login">
                     <div type="submit" class="btn btn-sm btn-round btn-custom"
-                        onclick="window.location.href='<?= site_url('guest/Login'); ?>'"><i class="fa fa-sign-in"></i>
+                        onclick="window.location.href='<?= site_url('guest/Dashboard/login'); ?>'"><i class="fa fa-sign-in"></i>
                         login</div>
                 </form>
             </div>
