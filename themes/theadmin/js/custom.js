@@ -26,17 +26,13 @@ $(document).ready(function () {
     });
 });
 
-// opsi kategori
-function tampilkanData() {
-  var kategori = document.getElementById("kategoriSelect").value;
-  var hasil = document.getElementById("hasil");
-
-  if (kategori === "Internal") {
-      hasil.innerHTML = '<div class="form-group col-lg-12"> <label class="text-dark">Instansi Internal</label> <select class="form-control"> <option>Biro Sistem Informasi</option> <option>Biro Sumber Daya Manusia</option> </select> </div>';
-  } else if (kategori === "Eksternal") {
-      hasil.innerHTML = '<div class="form-group col-lg-12"> <label class="text-dark">Instansi Eksternal</label> <input class="form-control" type="text"> </div>';
-  }
-}
+$(document).ready(function() {
+  $('#example').DataTable({
+      "language": {
+          "searchPlaceholder": "Cari data di sini..."
+      }
+  });
+});
 
 
 

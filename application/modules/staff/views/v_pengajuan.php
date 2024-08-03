@@ -86,6 +86,16 @@
                 </tbody>
             </table>
 
+            <script>
+                $(document).ready(function() {
+                    $('#example').DataTable({
+                        "language": {
+                            "searchPlaceholder": "Cari data di sini..."
+                        }
+                    });
+                });
+            </script>
+
         </div>
     </div>
 </div>

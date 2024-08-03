@@ -181,7 +181,7 @@ body {
 }
 
 .btn {
-  border-radius: 50px !important;
+  /* border-radius: 50px !important; */
 }
 
 .fab-dir-left .fab-buttons li {
@@ -429,6 +429,10 @@ thead {
 
 .form-control:focus {
   border-color: var(--primary-color) !important;
+}
+
+.dropdown-toggle{
+  border-radius: 8px !important;
 }
 
 /* footer */
