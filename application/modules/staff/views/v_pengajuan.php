@@ -28,7 +28,8 @@
                 </div>
             </div>
 
-            <table class="table table-separated table-striped table-responsive-sm" data-provide="datatables" data-scroll-collapse="true" cellspacing="0">
+            <table class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
+                data-scroll-collapse="true" cellspacing="0">
                 <thead class="bg-color-primary1">
                     <tr>
                         <th class="font-weight-bold">Tanggal</th>
@@ -40,60 +41,52 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($guests as $guest) { ?>
                     <tr>
-                        <td>99 Sept 9999</td>
-                        <td>Taufiq Aditya Putra</td>
-                        <td>Instansi ABC</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corporis vel magni distinctio debitis similique libero, aut hic impedit tempore.</td>
+                        <td>
+                            <?php
+                                $date = new DateTime($guest['created_at']);
+                                $formatted_date = $date->format('d F Y H:i');
+                                ?>
+                            <?= $formatted_date ?>
+                        </td>
+                        <td><?= $guest['nama'] ?></td>
+                        <td><?= $guest['instansi'] ?></td>
+                        <td><?= $guest['keperluan'] ?></td>
                         <td>
                             <div class="media-right">
-                                <div class="btn btn-sm btn-bold btn-round btn-flat btn-secondary w-100px">Pending</div>
+                                <div class="btn btn-sm btn-bold btn-round btn-flat 
+                                    <?php
+                                    if ($guest['status'] == 'Selesai') {
+                                        echo 'btn-success';
+                                    } else if ($guest['status'] == 'Proses') {
+                                        echo 'btn-warning';
+                                    } else {
+                                        echo 'btn-secondary';
+                                    }; ?>  w-100px"><?= $guest['status'] ?>
+                                </div>
                             </div>
                         </td>
                         <td>
-                            <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-success"><i class="fa fa-pencil"></i></a>
+                            <a href="#" data-toggle="modal"
+                                data-target="<?= $guest['status'] == 'Selesai' ? '#modal-ubah-' : '#modal-detail-' ?><?= $guest['id'] ?>"
+                                class="btn btn-square btn-round <?= $guest['status'] == 'Selesai' ? 'btn-info' : 'btn-success' ?>">
+                                <i class="<?= $guest['status'] == 'Selesai' ? 'fa fa-eye' : 'fa fa-pencil' ?>"></i>
+                            </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>99 Sept 9999</td>
-                        <td>Taufiq Aditya Putra</td>
-                        <td>Instansi ABC</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corporis vel magni distinctio debitis similique libero, aut hic impedit tempore.</td>
-                        <td>
-                            <div class="media-right">
-                                <div class="btn btn-sm btn-bold btn-round btn-flat btn-warning w-100px">Proses</div>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#modal-default" class="btn btn-square btn-round btn-success"><i class="fa fa-pencil"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>99 Sept 9999</td>
-                        <td>Taufiq Aditya Putra</td>
-                        <td>Instansi ABC</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corporis vel magni distinctio debitis similique libero, aut hic impedit tempore.</td>
-                        <td>
-                            <div class="media-right">
-                                <div class="btn btn-sm btn-bold btn-round btn-flat btn-success w-100px">Selesai</div>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#modal-default1" class="btn btn-square btn-round btn-info"><i class="fa fa-eye"></i></a>
-                        </td>
-                    </tr>
-
+                    <?php } ?>
                 </tbody>
             </table>
 
             <script>
-                $(document).ready(function() {
-                    $('#example').DataTable({
-                        "language": {
-                            "searchPlaceholder": "Cari data di sini..."
-                        }
-                    });
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    "language": {
+                        "searchPlaceholder": "Cari data di sini..."
+                    }
                 });
+            });
             </script>
 
         </div>
@@ -101,7 +94,8 @@
 </div>
 
 <!-- ubah Modal -->
-<div class="modal fade" id="modal-default" tabindex="-1">
+<?php foreach ($guests as $guest) { ?>
+<div class="modal fade" id="modal-detail-<?= $guest['id'] ?>" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,65 +104,69 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body form-type-round">
+            <form class="modal-body form-type-round" action="<?php echo site_url('staff/pengajuan/update'); ?>"
+                method="post">
+                <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Nama</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Taufiq Aditya Putra</p>
+                        <p class="col-form-label">: <?= $guest['nama'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">No.Whatsapp</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: 3152463733753</p>
+                        <p class="col-form-label">: <?= $guest['telp'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Asal Instansi</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Biso Kemahasiswaan Akademik</p>
+                        <p class="col-form-label">: <?= $guest['instansi'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Keperluan</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus suscipit, nemo ducimus voluptatibus deleniti iste fugiat ut mollitia veniam vero!</p>
+                        <p class="col-form-label">: <?= $guest['keperluan'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Tanggal Diterima</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: 99 Desember 9999</p>
+                        <p class="col-form-label">: <?= $guest['created_at'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="text-dark col-4 col-lg-2 col-form-label" for="input-2">Status</label>
                     <div class="col-8 col-lg-4">
-                        <select class="form-control">
-                            <option>Pending</option>
-                            <option>Proses</option>
-                            <option>Selesai</option>
+                        <select class="form-control" name="status">
+                            <option value="Pending" <?= $guest['status'] == 'Pending' ? 'selected' : '' ?>>Pending
+                            </option>
+                            <option value="Proses" <?= $guest['status'] == 'Proses' ? 'selected' : '' ?>>Proses</option>
+                            <option value="Selesai" <?= $guest['status'] == 'Selesai' ? 'selected' : '' ?>>Selesai
+                            </option>
                         </select>
                     </div>
                 </div>
 
                 <footer class="mx-4 my-4 text-right">
-                    <a class="btn btn-round btn-custom" type="submit" href="">Simpan</a>
+                    <button class="btn btn-round btn-custom" type="submit">Simpan</button>
                 </footer>
 
-            </div>
+            </form>
         </div>
     </div>
 </div>
 <!-- modal -->
 
 <!-- detail Modal -->
-<div class="modal fade" id="modal-default1" tabindex="-1">
+<div class="modal fade" id="modal-ubah-<?= $guest['id'] ?>" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -181,51 +179,49 @@
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Nama</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Taufiq Aditya Putra</p>
+                        <p class="col-form-label">: <?= $guest['nama'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">No.Whatsapp</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: 3152463733753</p>
+                        <p class="col-form-label">: <?= $guest['telp'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Asal Instansi</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Biso Kemahasiswaan Akademik</p>
+                        <p class="col-form-label">: <?= $guest['instansi'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Keperluan</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus suscipit, nemo ducimus voluptatibus deleniti iste fugiat ut mollitia veniam vero!</p>
+                        <p class="col-form-label">: <?= $guest['keperluan'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-lg-2 col-form-label" for="input-2">Tanggal Diterima</label>
                     <div class="col-8 col-lg-10">
-                        <p class="col-form-label">: 99 Desember 9999</p>
+                        <p class="col-form-label">: <?= $guest['created_at'] ?></p>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="text-dark col-4 col-lg-2 col-form-label" for="input-2">Status</label>
-                    <div class="col-8 col-lg-4">
-                        <select class="form-control">
-                            <option>Pending</option>
-                            <option>Proses</option>
-                            <option>Selesai</option>
-                        </select>
+                    <div class="col-8 col-lg-10">
+                        <p class="col-form-label">: <?= $guest['status'] ?></p>
+                        <div class="invalid-feedback"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 <!-- modal -->
+
+<?php } ?>
