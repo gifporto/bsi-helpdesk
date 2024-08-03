@@ -14,12 +14,28 @@ class Pengajuan extends APP_Controller
             ->set_partial('modules_js', 'modules_js')
             ->set_partial('modules_css', 'modules_css');
         $this->asset->set_theme($this->config->item('theme'));
+
+        $this->load->model('M_guest');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['title'] = 'Verifikasi Registrasi';
         $data['page_active'] = 'pengajuan';
+        $data['guests'] = $this->M_guest->get_guests();
         $this->template->build($this->module . '/v_pengajuan', $data);
     }
 
+    public function update()
+    {
+        $id = $this->input->post('id');
+
+        $data = array(
+            'status' => $this->input->post('status'),
+        );
+
+        $this->M_guest->update_guests($id, $data);
+
+        return redirect('staff/pengajuan');
+    }
 }

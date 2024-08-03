@@ -33,7 +33,9 @@ class Dashboard extends APP_Controller
         $data = array(
             'nama' => $this->input->post('nama'),
             'telp' => $this->input->post('telp'),
-            'keperluan' => $this->input->post('keperluan')
+            'keperluan' => $this->input->post('keperluan'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'status' => 'Pending'
         );
 
         // Check if 'instansi' or 'external' has a value
