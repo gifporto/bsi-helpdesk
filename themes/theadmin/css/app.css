@@ -15823,8 +15823,8 @@ ul.flexbox {
   width: 260px;
   background-color: #3f4a59;
   white-space: nowrap;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08);
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08);
+  /* -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.08); */
   display: -webkit-box;
   display: flex;
   overflow: hidden;
@@ -19264,7 +19264,7 @@ ul.flexbox {
   background-color: #fff;
   font-size: 12px;
   color: #616a78;
-  border-top: 1px solid #f1f2f3;
+  /* border-top: 1px solid #f1f2f3; */
 }
 
 .site-footer p {
