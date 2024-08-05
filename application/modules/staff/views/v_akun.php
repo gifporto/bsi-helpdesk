@@ -7,6 +7,9 @@
                     <div class="lookup">
                         <input class="w-200px" type="text" data-provide="media-search" placeholder="search..">
                     </div>
+                    <div class="ml-2">
+                    <a class="btn btn-sm btn-round btn-custom" data-toggle="modal" data-target="#modal-default" href="">+ Tambah</a>
+                </div>
                 </div>
                 <div class="media media-single">
                     <div class="media-body" onclick="window.location.href='<?= site_url('pt/Prodi/detailprodi'); ?>'">
@@ -35,7 +38,7 @@
                 </button>
             </div>
             <div class="modal-body form-type-round">
-                <div class="card card-bordered card-body">                    
+                <div class="card card-bordered card-body">
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label class="text-dark">Jenis Surat</label>
@@ -54,12 +57,12 @@
                             </select>
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label class="text-dark">Tanggal (Default otomatis)</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" data-provide="datepicker" value="<?=date("d/m/y")?>" disabled>
+                                <input type="text" class="form-control" data-provide="datepicker" value="<?= date("d/m/y") ?>" disabled>
                                 <span class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </span>
@@ -74,7 +77,7 @@
                             </select>
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label class="text-dark">Nomor surat</label>
@@ -85,14 +88,14 @@
                             <input class="form-control" type="text">
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="form-group col-lg-12">
                             <label class="text-dark">Isi Ringkas</label>
                             <textarea class="form-control" rows="5"></textarea>
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="form-group col-lg-12">
                             <label class="text-dark">Kategori</label>
@@ -248,8 +251,8 @@
                 </div>
 
                 <div class="gap-items-2 gap-y pb-2">
-                    <button id="button1"  class="btn btn-sm btn-secondary" data-provide="loader" data-target="#loader-target">Disposisi</button>
-                    <button id="button2"  class="btn btn-sm  btn-secondary" data-provide="loader" data-target="#loader-target">Arsip</button>
+                    <button id="button1" class="btn btn-sm btn-secondary" data-provide="loader" data-target="#loader-target">Disposisi</button>
+                    <button id="button2" class="btn btn-sm  btn-secondary" data-provide="loader" data-target="#loader-target">Arsip</button>
                 </div>
 
                 <div id="text1" class="card card-bordered card-body hidden">
@@ -310,7 +313,7 @@
                 <footer class="mx-4 my-4 text-right">
                     <a class="btn btn-round btn-custom" type="submit" href="">Simpan</a>
                 </footer>
-                
+
             </div>
         </div>
     </div>
