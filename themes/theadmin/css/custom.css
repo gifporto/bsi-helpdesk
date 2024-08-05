@@ -22,7 +22,7 @@ body {
 }
 
 .avatar-custom {
-  border-radius: 14px;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
   width: 55px;
@@ -116,7 +116,7 @@ body {
 }
 
 .card-custom {
-  border-radius: 16px !important;
+  border-radius: 8px !important;
   cursor: pointer;
   /* border: 1px solid #f1f2f3; */
   transition: background-color 0.3s ease;

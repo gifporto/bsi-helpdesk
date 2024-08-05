@@ -26,15 +26,6 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function() {
-  $('#example').DataTable({
-      "language": {
-          "searchPlaceholder": "Cari data di sini..."
-      }
-  });
-});
-
-
 
 
 

@@ -70,7 +70,7 @@
                         </td>
                         <td>
                             <?php
-                                $nohp = hp('085322471629');
+                                $nohp = hp('085239905885');
                                 $message = '&text=' . urlencode('Halo! ajuan anda sedang kami proses');
                                 $linkWA = $this->agent->is_mobile()
                                     ? 'https://api.whatsapp.com/send?phone=' . $nohp . $message
