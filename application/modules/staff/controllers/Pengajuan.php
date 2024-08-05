@@ -23,7 +23,7 @@ class Pengajuan extends APP_Controller
 
     public function index()
     {
-        $data['title'] = 'Verifikasi Registrasi';
+        $data['title'] = 'Pengajuan Layanan';
         $data['page_active'] = 'pengajuan';
         $data['guests'] = $this->M_guest->get_guests();
         $this->template->build($this->module . '/v_pengajuan', $data);
