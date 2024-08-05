@@ -371,10 +371,11 @@ thead {
   z-index: 995;
   -webkit-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
-  background-color: #fff !important;
-  -webkit-box-shadow: 4px 0 5px rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 4px 0 5px rgba(0, 0, 0, 0.08) !important;
+  /* -webkit-box-shadow: 4px 0 5px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 4px 0 5px rgba(0, 0, 0, 0.08) !important; */
+  backdrop-filter: blur(5px); /* Menambahkan efek blur */
 }
+
 
 .topbar {
   background-color: transparent;
