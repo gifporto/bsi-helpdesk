@@ -12,7 +12,7 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
 
 <div class="col-12">
     <div class="card shadow-2">
-        <form class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>" method="post">
+        <form id="submissionForm" class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>" method="post">
             <h4 class="fw-500">Pengajuan Layanan</h4>
 
             <div class="card card-bordered card-body">
@@ -71,6 +71,25 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
     </div>
 </div>
 
+<div id="errorModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lengkapi Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-round btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 function tampilkanDatas() {
     var kategori = document.getElementById("kategoriSelect").value;
@@ -87,4 +106,49 @@ function tampilkanDatas() {
         external.style.display = "none";
     }
 }
+
+document.getElementById('submissionForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var isValid = true;
+    var errorMessage = '';
+
+    var nama = document.getElementById('nama').value.trim();
+    var telp = document.getElementById('telp').value.trim();
+    var kategori = document.getElementById('kategoriSelect').value.trim();
+    var instansi = kategori === 'Internal' ? document.getElementById('instansi').value.trim() : '';
+    var external = kategori === 'Eksternal' ? document.getElementById('external').value.trim() : '';
+    var keperluan = document.getElementById('keperluan').value.trim();
+
+    if (nama === '') {
+        isValid = false;
+        errorMessage += 'Nama tidak boleh kosong.<br>';
+    }
+    if (telp === '') {
+        isValid = false;
+        errorMessage += 'No.HP tidak boleh kosong.<br>';
+    }
+    if (kategori === '') {
+        isValid = false;
+        errorMessage += 'Asal Instansi tidak boleh kosong.<br>';
+    }
+    if (kategori === 'Internal' && instansi === '') {
+        isValid = false;
+        errorMessage += 'Instansi Internal tidak boleh kosong.<br>';
+    }
+    if (kategori === 'Eksternal' && external === '') {
+        isValid = false;
+        errorMessage += 'Instansi Eksternal tidak boleh kosong.<br>';
+    }
+    if (keperluan === '') {
+        isValid = false;
+        errorMessage += 'Keperluan tidak boleh kosong.<br>';
+    }
+
+    if (!isValid) {
+        document.getElementById('errorMessage').innerHTML = errorMessage;
+        $('#errorModal').modal('show');
+    } else {
+        this.submit();
+    }
+});
 </script>
