@@ -3,28 +3,34 @@
     <div class="card shadow-2">
         <div class="card-body">
 
-            <div class="mb-2 d-flex justify-content-between">
-                <div class="btn-toolbar d-flex flex-wrap align-items-center">
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Status</button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <a class="dropdown-item" href="#">Pending</a>
-                            <a class="dropdown-item" href="#">Proses</a>
-                            <a class="dropdown-item" href="#">Selesai</a>
+            <div class="flexbox mb-20">
+                <div class="mb-2 d-flex justify-content-between">
+                    <div class="btn-toolbar d-flex flex-wrap align-items-center">
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Status</button>
+                            <div class="dropdown-menu dropdown-menu-left">
+                                <a class="dropdown-item" href="#">Pending</a>
+                                <a class="dropdown-item" href="#">Proses</a>
+                                <a class="dropdown-item" href="#">Selesai</a>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-sm m-1">
+                            <input type="date" class="btn form-control">
+                        </div>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Asal</button>
+                            <div class="dropdown-menu dropdown-menu-left">
+                                <input type="text" class="form-control mb-2" placeholder="Cari opsi...">
+                                <a class="dropdown-item" href="#">Asal Surat 1</a>
+                                <a class="dropdown-item" href="#">Asal Surat 2</a>
+                                <a class="dropdown-item" href="#">Asal Surat 3</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="btn-group btn-group-sm m-1">
-                        <input type="date" class="btn form-control">
-                    </div>
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Asal</button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <input type="text" class="form-control mb-2" placeholder="Cari opsi...">
-                            <a class="dropdown-item" href="#">Asal Surat 1</a>
-                            <a class="dropdown-item" href="#">Asal Surat 2</a>
-                            <a class="dropdown-item" href="#">Asal Surat 3</a>
-                        </div>
-                    </div>
+                </div>
+
+                <div class="ml-2">
+                    <a class="btn btn-sm btn-round btn-custom" data-toggle="modal" data-target="#modal-default" href="">Cetak<i class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
 

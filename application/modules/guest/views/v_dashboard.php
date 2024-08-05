@@ -20,10 +20,12 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
                     <div class="form-group col-lg-6">
                         <label class="text-dark">Nama</label>
                         <input id="nama" name="nama" class="form-control" type="text" placeholder="Nama Lengkap">
+                        <div class="invalid-feedback" id="errorNama"></div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label class="text-dark">No.HP</label>
-                        <input id="telp" name="telp" class="form-control" type="text" placeholder="08xxxxxxxxxx">
+                        <input id="telp" name="telp" class="form-control" type="number" placeholder="08xxxxxxxxxx">
+                        <div class="invalid-feedback" id="errorTelp"></div>
                     </div>
                 </div>
 
@@ -35,6 +37,7 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
                             <option value="Internal">Internal</option>
                             <option value="Eksternal">Eksternal</option>
                         </select>
+                        <div class="invalid-feedback" id="errorKategori"></div>
                     </div>
                 </div>
 
@@ -47,11 +50,13 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
                             <option value="Biro Sistem Informasi">Biro Sistem Informasi</option>
                             <option value="Biro Sumber Daya Manusia">Biro Sumber Daya Manusia</option>
                         </select>
+                        <div class="invalid-feedback" id="errorInstansi"></div>
                     </div>
 
                     <div id="v_external" class="form-group col-lg-12">
                         <label class="text-dark">Instansi Eksternal</label>
                         <input id="external" name="external" class="form-control" type="text">
+                        <div class="invalid-feedback" id="errorExternal"></div>
                     </div>
 
                 </div>
@@ -59,8 +64,8 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label class="text-dark">Keperluan</label>
-                        <textarea id="keperluan" name="keperluan" class="form-control" rows="5"
-                            placeholder="Catatan.."></textarea>
+                        <textarea id="keperluan" name="keperluan" class="form-control" rows="5" placeholder="Catatan.."></textarea>
+                        <div class="invalid-feedback" id="errorKeperluan"></div>
                     </div>
                 </div>
             </div>
@@ -71,26 +76,9 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
     </div>
 </div>
 
-<div id="errorModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Lengkapi Form</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="errorMessage"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-round btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
+
+//internal or eksternal
 function tampilkanDatas() {
     var kategori = document.getElementById("kategoriSelect").value;
     var internal = document.getElementById("v_internal");
@@ -107,10 +95,25 @@ function tampilkanDatas() {
     }
 }
 
+// validasi
+function validateInput(inputId, errorId, condition, message) {
+    var input = document.getElementById(inputId);
+    var error = document.getElementById(errorId);
+
+    if (condition) {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid-custom');
+        error.innerHTML = '';
+    } else {
+        input.classList.remove('is-valid-custom');
+        input.classList.add('is-invalid');
+        error.innerHTML = message;
+    }
+}
+
 document.getElementById('submissionForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var isValid = true;
-    var errorMessage = '';
 
     var nama = document.getElementById('nama').value.trim();
     var telp = document.getElementById('telp').value.trim();
@@ -119,36 +122,41 @@ document.getElementById('submissionForm').addEventListener('submit', function(ev
     var external = kategori === 'Eksternal' ? document.getElementById('external').value.trim() : '';
     var keperluan = document.getElementById('keperluan').value.trim();
 
-    if (nama === '') {
-        isValid = false;
-        errorMessage += 'Nama tidak boleh kosong.<br>';
+    validateInput('nama', 'errorNama', nama !== '', 'Nama tidak boleh kosong.');
+    validateInput('telp', 'errorTelp', telp !== '', 'No.HP tidak boleh kosong.');
+    validateInput('kategoriSelect', 'errorKategori', kategori !== '', 'Asal Instansi tidak boleh kosong.');
+    if (kategori === 'Internal') {
+        validateInput('instansi', 'errorInstansi', instansi !== '', 'Instansi Internal tidak boleh kosong.');
     }
-    if (telp === '') {
-        isValid = false;
-        errorMessage += 'No.HP tidak boleh kosong.<br>';
+    if (kategori === 'Eksternal') {
+        validateInput('external', 'errorExternal', external !== '', 'Instansi Eksternal tidak boleh kosong.');
     }
-    if (kategori === '') {
-        isValid = false;
-        errorMessage += 'Asal Instansi tidak boleh kosong.<br>';
-    }
-    if (kategori === 'Internal' && instansi === '') {
-        isValid = false;
-        errorMessage += 'Instansi Internal tidak boleh kosong.<br>';
-    }
-    if (kategori === 'Eksternal' && external === '') {
-        isValid = false;
-        errorMessage += 'Instansi Eksternal tidak boleh kosong.<br>';
-    }
-    if (keperluan === '') {
-        isValid = false;
-        errorMessage += 'Keperluan tidak boleh kosong.<br>';
-    }
+    validateInput('keperluan', 'errorKeperluan', keperluan !== '', 'Keperluan tidak boleh kosong.');
 
-    if (!isValid) {
-        document.getElementById('errorMessage').innerHTML = errorMessage;
-        $('#errorModal').modal('show');
-    } else {
+    isValid = document.querySelectorAll('.is-invalid').length === 0;
+
+    if (isValid) {
         this.submit();
     }
+});
+
+document.querySelectorAll('input, select, textarea').forEach(function(element) {
+    element.addEventListener('input', function() {
+        var inputId = this.id;
+        var errorId = 'error' + inputId.charAt(0).toUpperCase() + inputId.slice(1);
+        var value = this.value.trim();
+
+        if (inputId === 'kategoriSelect') {
+            validateInput(inputId, errorId, value !== '', 'Asal Instansi tidak boleh kosong.');
+        } else if (inputId === 'instansi') {
+            validateInput(inputId, errorId, value !== '', 'Instansi Internal tidak boleh kosong.');
+        } else if (inputId === 'external') {
+            validateInput(inputId, errorId, value !== '', 'Instansi Eksternal tidak boleh kosong.');
+        } else if (inputId === 'keperluan') {
+            validateInput(inputId, errorId, value !== '', 'Keperluan tidak boleh kosong.');
+        } else {
+            validateInput(inputId, errorId, value !== '', inputId.charAt(0).toUpperCase() + inputId.slice(1) + ' tidak boleh kosong.');
+        }
+    });
 });
 </script>
