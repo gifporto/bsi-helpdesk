@@ -83,7 +83,7 @@
                                 ?>
 
                                 <?php if ($guest['status'] != 'Selesai') : ?>
-                                    <a class="btn btn-success btn-sm rounded" id="buttonB" target="_blank" href="<?= $linkWA ?>" hidden>Chat WA</a>
+                                    <a class="btn btn-success btn-sm rounded" id="buttonB" target="" href="<?= $linkWA ?>" hidden>Chat WA</a>
                                 <?php endif; ?>
 
 
