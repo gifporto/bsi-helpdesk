@@ -77,7 +77,8 @@
                         </td>
                         <td>
                             <?php
-                                $nohp = hp('085322471629');
+
+                                $nohp = hp($guest['telp']);
                                 $message = '&text=' . urlencode('Halo! layanan anda sedang kami proses');
                                 $messageSelesai = '&text=' . urlencode('Halo! layanan anda sudah selesai');
                                 $linkWA = $this->agent->is_mobile()
