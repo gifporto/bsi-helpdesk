@@ -62,4 +62,16 @@ class Dashboard extends APP_Controller
         $data['page_active'] = 'login';
         $this->template->build($this->module . '/v_login', $data);
     }
+
+    public function lupapass()
+    {
+        $data['page_active'] = 'lupapassword';
+        $this->template->build($this->module . '/v_lupapassword', $data);
+
+    }
+    public function barupass()
+    {
+        $data['page_active'] = 'barupassword';
+        $this->template->build($this->module . '/v_barupassword', $data);
+    }
 }

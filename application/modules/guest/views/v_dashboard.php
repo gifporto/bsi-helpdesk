@@ -77,7 +77,6 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
 </div>
 
 <script>
-
 //internal or eksternal
 function tampilkanDatas() {
     var kategori = document.getElementById("kategoriSelect").value;
@@ -95,7 +94,7 @@ function tampilkanDatas() {
     }
 }
 
-// validasi
+// validasi kolom input berubah warna
 function validateInput(inputId, errorId, condition, message) {
     var input = document.getElementById(inputId);
     var error = document.getElementById(errorId);
@@ -111,6 +110,7 @@ function validateInput(inputId, errorId, condition, message) {
     }
 }
 
+// validasi menampilkan teks dibawah kolom input
 document.getElementById('submissionForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var isValid = true;
@@ -140,6 +140,7 @@ document.getElementById('submissionForm').addEventListener('submit', function(ev
     }
 });
 
+// menghilangkan validasi saat kolom terisi
 document.querySelectorAll('input, select, textarea').forEach(function(element) {
     element.addEventListener('input', function() {
         var inputId = this.id;
