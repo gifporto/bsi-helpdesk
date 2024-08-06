@@ -30,8 +30,8 @@
                 </div>
 
                 <div class="ml-2">
-                    <a class="btn btn-sm btn-round btn-custom" data-toggle="modal" data-target="#modal-default"
-                        href="">Cetak<i class="ml-2 bi bi-printer-fill"></i></a>
+                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('staff/Pengajuan/export'); ?>">Cetak<i
+                            class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
 
