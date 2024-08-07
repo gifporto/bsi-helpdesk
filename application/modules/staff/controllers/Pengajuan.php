@@ -42,6 +42,10 @@ class Pengajuan extends APP_Controller
             'kategori' => $this->input->post('kategori'),
         );
 
+        if ($data['status'] == 'Selesai') {
+            $data['waktu_selesai'] = date('Y-m-d H:i:s');
+        }
+
         $this->M_guest->update_guests($id, $data);
 
         return redirect('staff/pengajuan');
