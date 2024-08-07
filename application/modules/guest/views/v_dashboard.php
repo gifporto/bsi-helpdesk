@@ -12,11 +12,13 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
 
 <div class="col-12">
     <div class="card shadow-2">
-        <form id="submissionForm" class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>" method="post">
+        <form id="submissionForm" class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>"
+            method="post">
             <h4 class="fw-500">Pengajuan Layanan</h4>
 
             <div class="card card-bordered card-body">
                 <div class="row">
+                    <input type="text" id="lokasi" name="lokasi" value="<?= htmlspecialchars($lokasi) ?>" hidden>
                     <div class="form-group col-lg-6">
                         <label class="text-dark">Nama</label>
                         <input id="nama" name="nama" class="form-control" type="text" placeholder="Nama Lengkap">
@@ -64,7 +66,8 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label class="text-dark">Keperluan</label>
-                        <textarea id="keperluan" name="keperluan" class="form-control" rows="5" placeholder="Catatan.."></textarea>
+                        <textarea id="keperluan" name="keperluan" class="form-control" rows="5"
+                            placeholder="Catatan.."></textarea>
                         <div class="invalid-feedback" id="errorKeperluan"></div>
                     </div>
                 </div>
@@ -156,7 +159,8 @@ document.querySelectorAll('input, select, textarea').forEach(function(element) {
         } else if (inputId === 'keperluan') {
             validateInput(inputId, errorId, value !== '', 'Keperluan tidak boleh kosong.');
         } else {
-            validateInput(inputId, errorId, value !== '', inputId.charAt(0).toUpperCase() + inputId.slice(1) + ' tidak boleh kosong.');
+            validateInput(inputId, errorId, value !== '', inputId.charAt(0).toUpperCase() + inputId
+                .slice(1) + ' tidak boleh kosong.');
         }
     });
 });

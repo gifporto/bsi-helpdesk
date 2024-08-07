@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -59,3 +59,6 @@ $route['admin'] = $CFG->item('app_auth_controller');;
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['guest/Dashboard/(:any)'] = 'guest/Dashboard/index/$1';
+$route['guest/Dashboard'] = 'guest/Dashboard/index';

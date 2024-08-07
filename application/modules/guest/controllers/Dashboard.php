@@ -5,7 +5,7 @@ class Dashboard extends APP_Controller
 {
 
     private $module = 'guest';
-
+    private $allowed_params = ['bsi1', 'bsi2', 'bsi3', 'bsi4', 'bsi5'];
 
     public function __construct()
     {
@@ -22,11 +22,17 @@ class Dashboard extends APP_Controller
         $this->load->library('user_agent');
     }
 
-    public function index()
+    public function index($param = "")
     {
-        $data['page_active'] = 'dashboard';
-        $this->template->build($this->module . '/v_dashboard', $data);
+        if (in_array($param, $this->allowed_params)) {
+            $data['lokasi'] = $param;
+            $data['page_active'] = 'dashboard';
+            $this->template->build('guest/v_dashboard', $data);
+        } else {
+            show_404();
+        }
     }
+
 
     public function store()
     {
@@ -35,10 +41,10 @@ class Dashboard extends APP_Controller
             'telp' => $this->input->post('telp'),
             'keperluan' => $this->input->post('keperluan'),
             'created_at' => date('Y-m-d H:i:s'),
-            'status' => 'Pending'
+            'status' => 'Pending',
+            'lokasi' => $this->input->post('lokasi'),
         );
 
-        // Check if 'instansi' or 'external' has a value
         if ($this->input->post('instansi')) {
             $data['instansi'] = $this->input->post('instansi');
         } elseif ($this->input->post('external')) {
@@ -67,7 +73,6 @@ class Dashboard extends APP_Controller
     {
         $data['page_active'] = 'lupapassword';
         $this->template->build($this->module . '/v_lupapassword', $data);
-
     }
     public function barupass()
     {
