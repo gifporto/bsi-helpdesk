@@ -42,6 +42,7 @@ class Dashboard extends APP_Controller
             'keperluan' => $this->input->post('keperluan'),
             'created_at' => date('Y-m-d H:i:s'),
             'status' => 'Pending',
+            'kategori' => 'Layanan',
             'lokasi' => $this->input->post('lokasi'),
         );
 

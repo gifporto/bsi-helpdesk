@@ -39,6 +39,20 @@ class Pengajuan extends APP_Controller
 
         $data = array(
             'status' => $this->input->post('status'),
+            'kategori' => $this->input->post('kategori'),
+        );
+
+        $this->M_guest->update_guests($id, $data);
+
+        return redirect('staff/pengajuan');
+    }
+
+    public function add_note()
+    {
+        $id = $this->input->post('id');
+
+        $data = array(
+            'catatan' => $this->input->post('catatan'),
         );
 
         $this->M_guest->update_guests($id, $data);
