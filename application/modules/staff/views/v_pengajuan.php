@@ -180,6 +180,7 @@
 
                                 <option value="Layanan" <?= $guest['status'] == 'Layanan' ? 'selected' : '' ?>>Layanan</option>
                                 <option value="BukuTamu" <?= $guest['status'] == 'BukuTamu' ? 'selected' : '' ?>>Buku Tamu</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -190,7 +191,7 @@
 
                                 <option value="Proses" <?= $guest['status'] == 'Proses' ? 'selected' : '' ?>>Proses</option>
                                 <option value="Selesai" <?= $guest['status'] == 'Selesai' ? 'selected' : '' ?>>Selesai</option>
-                                
+
                             </select>
                         </div>
                     </div>
