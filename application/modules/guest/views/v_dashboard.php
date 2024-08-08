@@ -18,7 +18,7 @@ else $linkWA = 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
 
             <div class="card card-bordered card-body">
                 <div class="row">
-                    <input type="text" id="lokasi" name="lokasi" value="<?= htmlspecialchars($lokasi) ?>" hidden>
+                    <!-- <input type="text" id="lokasi" name="lokasi" value="<?= htmlspecialchars($lokasi) ?>" hidden> -->
                     <div class="form-group col-lg-6">
                         <label class="text-dark">Nama</label>
                         <input id="nama" name="nama" class="form-control" type="text" placeholder="Nama Lengkap">

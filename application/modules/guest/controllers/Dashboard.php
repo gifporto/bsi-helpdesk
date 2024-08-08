@@ -5,7 +5,7 @@ class Dashboard extends APP_Controller
 {
 
     private $module = 'guest';
-    private $allowed_params = ['bsi1', 'bsi2', 'bsi3', 'bsi4', 'bsi5'];
+    // private $allowed_params = ['bsi1', 'bsi2', 'bsi3', 'bsi4', 'bsi5'];
 
     public function __construct()
     {
@@ -22,15 +22,10 @@ class Dashboard extends APP_Controller
         $this->load->library('user_agent');
     }
 
-    public function index($param = "")
+    public function index()
     {
-        if (in_array($param, $this->allowed_params)) {
-            $data['lokasi'] = $param;
-            $data['page_active'] = 'dashboard';
-            $this->template->build('guest/v_dashboard', $data);
-        } else {
-            show_404();
-        }
+        $data['page_active'] = 'dashboard';
+        $this->template->build('guest/v_dashboard', $data);
     }
 
 
