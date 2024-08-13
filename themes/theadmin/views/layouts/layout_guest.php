@@ -42,11 +42,11 @@
     <!-- Topbar -->
     <header class="topbar topbar-expand-lg" id="topbar">
         <div class="container">
-            <div class="topbar-left">
+            <a href="<?= site_url('guest/dashboard')?>" class="topbar-left">
                 <div class="m-1"><img src="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" alt="logo icon"
                         style="width: 32px;"></div>
-                <a class="text1">Helpdesk BSI.</a>
-            </div>
+                <span class="text1">Helpdesk BSI.</span>
+            </a>
 
             <div class="topbar-right">
                 <form action="/login">

@@ -3,9 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends APP_Controller
 {
-
     private $module = 'guest';
-    // private $allowed_params = ['bsi1', 'bsi2', 'bsi3', 'bsi4', 'bsi5'];
 
     public function __construct()
     {
@@ -16,9 +14,7 @@ class Dashboard extends APP_Controller
         $this->asset->set_theme($this->config->item('theme'));
 
         $this->load->model('M_guest');
-
-        $this->load->helper('nohp');
-        $this->load->helper('text');
+        $this->load->helper(['nohp', 'text']);
         $this->load->library('user_agent');
     }
 
@@ -28,22 +24,22 @@ class Dashboard extends APP_Controller
         $this->template->build('guest/v_dashboard', $data);
     }
 
-
     public function store()
     {
         $data = array(
             'nama' => $this->input->post('nama'),
             'telp' => $this->input->post('telp'),
             'keperluan' => $this->input->post('keperluan'),
-            'created_at' => date('Y-m-d H:i:s'),
+            'unit_bsi' => $this->input->post('unit_bsi'),
             'status' => 'Pending',
-            'kategori' => 'Layanan',
-            'lokasi' => $this->input->post('lokasi'),
+            'created_at' => date('Y-m-d H:i:s'),
         );
 
-        if ($this->input->post('instansi')) {
-            $data['instansi'] = $this->input->post('instansi');
-        } elseif ($this->input->post('external')) {
+        // Memeriksa apakah kategori adalah internal atau eksternal
+        $kategori = $this->input->post('kategori');
+        if ($kategori === 'Internal') {
+            $data['instansi'] = $this->input->post('internal');
+        } elseif ($kategori === 'Eksternal') {
             $data['instansi'] = $this->input->post('external');
         } else {
             $data['instansi'] = null;
@@ -70,6 +66,7 @@ class Dashboard extends APP_Controller
         $data['page_active'] = 'lupapassword';
         $this->template->build($this->module . '/v_lupapassword', $data);
     }
+
     public function barupass()
     {
         $data['page_active'] = 'barupassword';
