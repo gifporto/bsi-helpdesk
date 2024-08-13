@@ -54,8 +54,13 @@ class Akun extends CI_Controller
 
             $this->m_user->create_user($data);
 
-            $this->session->set_flashdata('success', 'User berhasil dibuat');
-            redirect('super/akun/index');
+            if (!$this->session->userdata('logged_in')) {
+                redirect('login');
+            }
+
+            if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
+                redirect('guest/dashboard/login');
+            }
         }
     }
 

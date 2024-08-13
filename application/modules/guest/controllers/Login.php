@@ -46,7 +46,7 @@ class Login extends APP_Controller
         } else {
             // Jika login gagal, tampilkan pesan error
             $this->session->set_flashdata('error', 'email atau password salah');
-            redirect('login');
+            redirect('/guest/login');
         }
     }
 
@@ -54,6 +54,6 @@ class Login extends APP_Controller
     {
         // Hapus sesi pengguna
         $this->session->sess_destroy();
-        redirect('login');
+        redirect('/guest/login');
     }
 }

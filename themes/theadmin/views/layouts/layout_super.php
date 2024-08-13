@@ -47,8 +47,8 @@
                     </a>
                 </li>
 
-                <li class="menu-item <?= $page_active == 'laporan' ? 'active' : '' ?>">
-                    <a class="menu-link menu-color" href="<?= site_url('super/Pengajuan'); ?>">
+                <li class="menu-item <?= $page_active == 'rekap' ? 'active' : '' ?>">
+                    <a class="menu-link menu-color" href="<?= site_url('super/rekap'); ?>">
                         <i class="bi bi-inboxes-fill"></i>
                         <span class="title">Rekapitulasi</span>
                     </a>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </a>
-                    <a class="dropdown-item" href="../page-extra/user-login-3.html"><i class="ti-power-off"></i> Logout</a>
+                    <a class="dropdown-item" href="<?= site_url('guest/login/logout'); ?>"><i class="ti-power-off"></i> Logout</a>
                 </div>
             </div>
 
