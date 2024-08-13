@@ -21,6 +21,4 @@ class KelolaAKun extends APP_Controller
         $data['page_active'] = 'akun';
         $this->template->build($this->module . '/v_akun', $data);
     }
-
-  
 }

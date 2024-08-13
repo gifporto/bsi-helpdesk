@@ -51,7 +51,7 @@
             <div class="topbar-right">
                 <form action="/login">
                     <div type="submit" class="btn btn-sm btn-round btn-custom"
-                        onclick="window.location.href='<?= site_url('guest/Dashboard/login'); ?>'"><i class="fa fa-sign-in"></i>
+                        onclick="window.location.href='<?= site_url('guest/login'); ?>'"><i class="fa fa-sign-in"></i>
                         login</div>
                 </form>
             </div>

@@ -41,8 +41,8 @@
                     <tr>
                         <th class="font-weight-bold">Tanggal</th>
                         <th class="font-weight-bold">Nama</th>
-                        <th class="font-weight-bold">Asal</th>
-                        <th class="font-weight-bold">Kategori</th>
+                        <th class="font-weight-bold">Instansi</th>
+                        <th class="font-weight-bold">Unit BSI</th>
                         <th class="font-weight-bold">Keperluan</th>
                         <th class="font-weight-bold">Status</th>
                         <th class="font-weight-bold">Aksi</th>
@@ -60,7 +60,7 @@
                         </td>
                         <td><?= $guest['nama'] ?></td>
                         <td><?= $guest['instansi'] ?></td>
-                        <td><?= $guest['kategori'] ?></td>
+                        <td><?= $guest['unit_bsi'] ?></td>
                         <td><?= $guest['keperluan'] ?></td>
                         <td>
                             <div class="media-right">

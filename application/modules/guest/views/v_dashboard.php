@@ -74,9 +74,9 @@ $linkWA = $this->agent->is_mobile()
                         <label class="text-dark require">Jenis Keperluan</label>
                         <select class="form-control" id="keperluan" name="keperluan" required>
                             <option value="">Pilih Jenis Keperluan</option>
-                            <option value="teknis">Teknis</option>
-                            <option value="aduan">Aduan</option>
-                            <option value="tamu">Tamu</option>
+                            <option value="Teknis">Teknis</option>
+                            <option value="Aduan">Aduan</option>
+                            <option value="Tamu">Tamu</option>
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>
