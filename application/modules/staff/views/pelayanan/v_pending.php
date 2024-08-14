@@ -75,14 +75,49 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-success btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-info btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')"><i class="fa fa-hourglass-1"></i></button>
-                                <button class="btn btn-danger btn-sm text-center" onclick="destroy(<?= $guest['id'] ?>)"><i class="fa fa-close"></i></button>
+                                <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')"><i class="fa fa-hourglass-1"></i></button>
+                                <button class="btn btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="btn btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)"><i class="fa fa-close"></i></button>
+                                <!-- btn-round -->
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_pesan" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createUserModalLabel">Buat Pengguna Baru</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo site_url('super/akun/store'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <p type="text" class="form-control">Ama</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Telp</label>
+                        <p type="text" class="form-control">08</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Email</label>
+                        <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-round btn-custom">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
