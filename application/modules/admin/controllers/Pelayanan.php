@@ -43,6 +43,18 @@ class Pelayanan extends APP_Controller
         echo json_encode(['success' => true]);
     }
 
+    public function destroy()
+    {
+        $id = $this->input->post('id');
+
+        if ($this->M_guest->delete_item($id)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
+        }
+    }
+
+
     public function export()
     {
         $this->load->helper('download');

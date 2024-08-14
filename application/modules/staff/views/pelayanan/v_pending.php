@@ -75,7 +75,8 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-success btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'ACC')"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-success btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-info btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')"><i class="fa fa-hourglass-1"></i></button>
                                 <button class="btn btn-danger btn-sm text-center" onclick="destroy(<?= $guest['id'] ?>)"><i class="fa fa-close"></i></button>
                             </td>
                         </tr>
@@ -100,27 +101,22 @@
         var buttonB = document.getElementById('buttonB');
         buttonB.click();
     }
-</script>
 
-<script>
     $(document).ready(function() {
-        $('#buttonA').hide(); // Sembunyikan tombol saat halaman pertama kali dimuat
+        $('#buttonA').hide();
 
         $('#catatan').on('input', function() {
-            // Periksa jika kolom catatan tidak kosong
             if ($(this).val().trim() !== '') {
-                $('#buttonA').show(); // Tampilkan tombol jika ada teks
+                $('#buttonA').show();
             } else {
-                $('#buttonA').hide(); // Sembunyikan tombol jika kosong
+                $('#buttonA').hide();
             }
         });
     });
-</script>
 
-<script>
     function updateStatus(id, status) {
         $.ajax({
-            url: '<?= site_url('admin/Pelayanan/update_status') ?>',
+            url: '<?= site_url('staff/Pelayanan/update_status') ?>',
             type: 'POST',
             data: {
                 id: id,
@@ -138,7 +134,7 @@
     function destroy(id) {
         if (confirm('Apakah Anda yakin ingin menghapus tamu ini?')) {
             $.ajax({
-                url: '<?= site_url('admin/Pelayanan/destroy') ?>',
+                url: '<?= site_url('staff/Pelayanan/destroy') ?>',
                 type: 'POST',
                 data: {
                     id: id,

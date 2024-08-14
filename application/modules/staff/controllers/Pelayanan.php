@@ -5,11 +5,9 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Pengajuan extends APP_Controller
+class Pelayanan extends APP_Controller
 {
-
     private $module = 'staff';
-
 
     public function __construct()
     {
@@ -27,41 +25,34 @@ class Pengajuan extends APP_Controller
 
     public function index()
     {
-        $data['title'] = 'Pengajuan Layanan';
-        $data['page_active'] = 'pengajuan';
+        $data['title'] = 'Pelayanan Buku Tamu';
+        $data['page_active'] = 'pelayanan';
         $data['guests'] = $this->M_guest->get_guests();
-        $this->template->build($this->module . '/v_pengajuan', $data);
+        $this->template->build($this->module . '/v_pelayanan', $data);
     }
 
-    public function update()
+    public function update_status()
+    {
+        $id = $this->input->post('id');
+        $status = $this->input->post('status');
+
+        $data = array('status' => $status);
+        $this->M_guest->update_guests($id, $data);
+
+        echo json_encode(['success' => true]);
+    }
+
+
+
+    public function destroy()
     {
         $id = $this->input->post('id');
 
-        $data = array(
-            'status' => $this->input->post('status'),
-            'kategori' => $this->input->post('kategori'),
-        );
-
-        if ($data['status'] == 'Selesai') {
-            $data['waktu_selesai'] = date('Y-m-d H:i:s');
+        if ($this->M_guest->delete_item($id)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
         }
-
-        $this->M_guest->update_guests($id, $data);
-
-        return redirect('staff/pengajuan');
-    }
-
-    public function add_note()
-    {
-        $id = $this->input->post('id');
-
-        $data = array(
-            'catatan' => $this->input->post('catatan'),
-        );
-
-        $this->M_guest->update_guests($id, $data);
-
-        return redirect('staff/pengajuan');
     }
 
     public function export()
@@ -104,5 +95,29 @@ class Pengajuan extends APP_Controller
         $writer->save($filename);
 
         force_download($filename, NULL);
+    }
+
+    public function index_pending()
+    {
+        $data['title'] = 'Pelayanan Buku Tamu';
+        $data['page_active'] = 'pelayanan_pending';
+        $data['guests'] = $this->M_guest->get_guests_by_status('Pending'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $this->template->build($this->module . '/pelayanan/v_pending', $data);
+    }
+
+    public function index_proses()
+    {
+        $data['title'] = 'Pelayanan Buku Tamu';
+        $data['page_active'] = 'pelayanan_proses';
+        $data['guests'] = $this->M_guest->get_guests_by_status('Proses');
+        $this->template->build($this->module . '/pelayanan/v_proses', $data);
+    }
+
+    public function index_selesai()
+    {
+        $data['title'] = 'Pelayanan Buku Tamu';
+        $data['page_active'] = 'pelayanan_acc';
+        $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
+        $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
 }

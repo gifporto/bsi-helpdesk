@@ -47,79 +47,33 @@
           </a>
         </li>
 
-        <li class="menu-item <?= $page_active == 'pengajuan' ? 'active' : '' ?>">
-          <a class="menu-link menu-color" href="<?= site_url('staff/Pengajuan'); ?>">
+        <li class="menu-item open <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?><?= $page_active == 'pelayanan_acc' ? 'active' : '' ?>">
+          <a class="menu-link menu-color">
             <i class="bi bi-inboxes-fill"></i>
-            <span class="title">Pengajuan</span>
-          </a>
-        </li>
-
-        <li class="menu-item <?= $page_active == 'akun' ? 'active' : '' ?>">
-          <a class="menu-link menu-color" href="<?= site_url('staff/kelolaAkun'); ?>">
-            <i class="bi bi-person-gear"></i>
-            <span class="title">Kelola Akun</span>
-          </a>
-        </li>
-
-
-        <!-- <li class="menu-item <?= $page_active == 'data' ? 'active open' : '' ?>">
-          <a class="menu-link menu-color" href="#">
-            <i class="bi bi-envelope-paper"></i>
-            <span class="title">Data</span>
-            <span class="arrow"></span>
+            <span class="title">Pelayanan</span>
           </a>
 
           <ul class="menu-submenu">
-            <?php
-            $activeTitles = ['Penawaran CSR', 'Detail'];
-            ?>
-            <li class="menu-item <?= in_array($title, $activeTitles) ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/Data/penawarancsr'); ?>">
+            <li class="menu-item <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?>">
+              <a class="menu-link" href="<?= site_url('staff/pelayanan/index_pending'); ?>">
                 <span class="dot"></span>
-                <span class="title">Penawaran CSR</span>
+                <span class="title">Pending</span>
               </a>
             </li>
-
-            <?php
-            $activeTitles = ['Kebutuan Dana CSR', 'Detail'];
-            ?>
-            <li class="menu-item <?= in_array($title, $activeTitles) ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/Data/kebutuhandanacsr'); ?>">
+            <li class="menu-item <?= $page_active == 'pelayanan_proses' ? 'active' : '' ?>">
+              <a class="menu-link" href="<?= site_url('staff/pelayanan/index_proses'); ?>">
                 <span class="dot"></span>
-                <span class="title">Kebutuan dana CSR</span>
+                <span class="title">Proses</span>
               </a>
             </li>
-
+            <li class="menu-item <?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
+              <a class="menu-link" href="<?= site_url('staff/pelayanan/index_selesai'); ?>">
+                <span class="dot"></span>
+                <span class="title">Selesai</span>
+              </a>
+            </li>
           </ul>
         </li>
-
-        <li class="menu-item <?= $page_active == 'rekapdata' ? 'active open' : '' ?>">
-          <a class="menu-link menu-color active" href="#">
-            <i class="bi bi-inboxes"></i>
-            <span class="title">Rekap Data</span>
-            <span class="arrow"></span>
-          </a>
-          <ul class="menu-submenu">
-            <li class="menu-item <?= $title == 'Penawaran per Periode' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/penawaranperperiode'); ?>">
-                <span class="dot"></span>
-                <span class="title">Penawaran per periode</span>
-              </a>
-            </li>
-            <li class="menu-item <?= $title == 'Usulan Kebutuan Dana CSR per Periode' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/usulandanaperperiode'); ?>">
-                <span class="dot"></span>
-                <span class="title">Usulan dana per periode</span>
-              </a>
-            </li>
-            <li class="menu-item <?= $title == 'Realisasi' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/realisasi'); ?>">
-                <span class="dot"></span>
-                <span class="title">Realisasi</span>
-              </a>
-            </li>
-          </ul>
-        </li> -->
 
       </ul>
     </nav>
@@ -208,7 +162,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
 
-  
+
 
 </body>
 

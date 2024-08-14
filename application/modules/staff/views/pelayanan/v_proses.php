@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="ml-2">
-                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('staff/Pengajuan/export'); ?>">Cetak<i
+                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export'); ?>">Cetak<i
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
@@ -50,65 +50,35 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                    <tr>
-                        <td>
-                            <?php
+                        <tr>
+                            <td>
+                                <?php
                                 $date = new DateTime($guest['created_at']);
                                 $formatted_date = $date->format('d F Y H:i');
                                 ?>
-                            <?= $formatted_date ?>
-                        </td>
-                        <td><?= $guest['nama'] ?></td>
-                        <td><?= $guest['instansi'] ?></td>
-                        <td><?= $guest['unit_bsi'] ?></td>
-                        <td><?= $guest['keperluan'] ?></td>
-                        <td>
-                            <div class="media-right">
-
-                                <div class="btn btn-sm btn-bold btn-round btn-flat 
-                                    <?php
-                                    if ($guest['status'] == 'Selesai') {
-                                        echo 'btn-success';
-                                    } else if ($guest['status'] == 'Proses') {
-                                        echo 'btn-warning';
-                                    } else {
-                                        echo 'btn-secondary';
-                                    }; ?>  w-100px"><?= $guest['status'] ?>
+                                <?= $formatted_date ?>
+                            </td>
+                            <td><?= $guest['nama'] ?></td>
+                            <td><?= $guest['instansi'] ?></td>
+                            <td><?= $guest['unit_bsi'] ?></td>
+                            <td><?= $guest['keperluan'] ?></td>
+                            <td>
+                                <div class="media-right">
+                                    <button class="btn btn-sm btn-bold btn-round 
+                    <?php
+                        if ($guest['status'] == 'ACC') {
+                            echo 'btn-success';
+                        } else {
+                            echo 'btn-secondary';
+                        } ?>"><?= $guest['status'] ?>
+                                    </button>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <?php
-
-                                $nohp = hp($guest['telp']);
-                                $message = '&text=' . urlencode('Halo! layanan anda sedang kami proses');
-                                $messageSelesai = '&text=' . urlencode('Halo! layanan anda sudah selesai');
-                                $linkWA = $this->agent->is_mobile()
-                                    ? 'https://api.whatsapp.com/send?phone=' . $nohp . $message
-                                    : 'whatsapp://send?phone=' . $nohp . $message;
-                                $linkWASelesai = $this->agent->is_mobile()
-                                    ? 'https://api.whatsapp.com/send?phone=' . $nohp . $messageSelesai
-                                    : 'whatsapp://send?phone=' . $nohp . $messageSelesai;
-                                ?>
-
-                            <?php if ($guest['status'] == 'Pending') : ?>
-                            <a class="btn btn-success btn-sm rounded" id="buttonB" target="" href="<?= $linkWA ?>"
-                                hidden>Chat
-                                WA</a>
-                            <?php elseif ($guest['status'] == 'Proses') : ?>
-                            <a class="btn btn-success btn-sm rounded" id="buttonB" target=""
-                                href="<?= $linkWASelesai ?>" hidden>Chat WA</a>
-                            <?php endif; ?>
-
-
-
-                            <a href="#" data-toggle="modal"
-                                data-target="<?= $guest['status'] == 'Selesai' ? '#modal-ubah-' : '#modal-detail-' ?><?= $guest['id'] ?>"
-                                class="btn btn-square btn-round <?= $guest['status'] == 'Selesai' ? 'btn-info' : 'btn-success' ?>">
-                                <i class="<?= $guest['status'] == 'Selesai' ? 'fa fa-eye' : 'fa fa-pencil' ?>"></i>
-                            </a>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-sm text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'ACC')"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-danger btn-sm text-center"><i class="fa fa-close"></i></button>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -118,24 +88,24 @@
 
 
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        "language": {
-            "searchPlaceholder": "Cari data di sini..."
-        }
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "language": {
+                "searchPlaceholder": "Cari data di sini..."
+            }
+        });
     });
-});
 
-function triggerButtonB() {
-    var buttonB = document.getElementById('buttonB');
-    buttonB.click();
-}
+    function triggerButtonB() {
+        var buttonB = document.getElementById('buttonB');
+        buttonB.click();
+    }
 </script>
 
 
 <!-- ubah Modal -->
-<?php foreach ($guests as $guest) { ?>
-<div class="modal fade" id="modal-detail-<?= $guest['id'] ?>" tabindex="-1">
+<!-- <?php foreach ($guests as $guest) { ?> -->
+<!-- <div class="modal fade" id="modal-detail-<?= $guest['id'] ?>" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,7 +114,7 @@ function triggerButtonB() {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="modal-body form-type-round" action="<?php echo site_url('staff/pengajuan/update'); ?>"
+            <form class="modal-body form-type-round" action="<?php echo site_url('admin/pelayanan/update'); ?>"
                 method="post">
                 <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                 <div class="form-group row">
@@ -223,11 +193,11 @@ function triggerButtonB() {
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- modal -->
 
 <!-- detail Modal -->
-<div class="modal fade" id="modal-ubah-<?= $guest['id'] ?>" tabindex="-1">
+<!-- <div class="modal fade" id="modal-ubah-<?= $guest['id'] ?>" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -236,7 +206,7 @@ function triggerButtonB() {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="modal-body form-type-round" action="<?php echo site_url('staff/pengajuan/add_note'); ?>"
+            <form class="modal-body form-type-round" action="<?php echo site_url('admin/pelayanan/add_note'); ?>"
                 method="post">
                 <input type="hidden" name="id" value="<?= $guest['id'] ?>">
 
@@ -296,22 +266,41 @@ function triggerButtonB() {
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- modal -->
 
-<?php } ?>
+<!-- <?php } ?> -->
 
 <script>
-$(document).ready(function() {
-    $('#buttonA').hide(); // Sembunyikan tombol saat halaman pertama kali dimuat
+    $(document).ready(function() {
+        $('#buttonA').hide(); // Sembunyikan tombol saat halaman pertama kali dimuat
 
-    $('#catatan').on('input', function() {
-        // Periksa jika kolom catatan tidak kosong
-        if ($(this).val().trim() !== '') {
-            $('#buttonA').show(); // Tampilkan tombol jika ada teks
-        } else {
-            $('#buttonA').hide(); // Sembunyikan tombol jika kosong
-        }
+        $('#catatan').on('input', function() {
+            // Periksa jika kolom catatan tidak kosong
+            if ($(this).val().trim() !== '') {
+                $('#buttonA').show(); // Tampilkan tombol jika ada teks
+            } else {
+                $('#buttonA').hide(); // Sembunyikan tombol jika kosong
+            }
+        });
     });
-});
+</script>
+
+<script>
+    function updateStatus(id, status) {
+        $.ajax({
+            url: '<?= site_url('admin/Pelayanan/update_status') ?>',
+            type: 'POST',
+            data: {
+                id: id,
+                status: status
+            },
+            success: function(response) {
+                location.reload(); // Memuat ulang halaman setelah status diperbarui
+            },
+            error: function(xhr, status, error) {
+                alert('Terjadi kesalahan saat memperbarui status.');
+            }
+        });
+    }
 </script>

@@ -367,3 +367,9 @@ ERROR - 2024-08-13 20:06:17 --> Severity: Warning --> Undefined array key "lokas
 ERROR - 2024-08-13 20:06:17 --> Severity: Warning --> Undefined array key "kategori" D:\laragon\www\bsi-helpdesk\application\modules\admin\views\pelayanan\v_pending.php 167
 ERROR - 2024-08-13 20:06:17 --> Severity: Warning --> Undefined array key "kategori" D:\laragon\www\bsi-helpdesk\application\modules\admin\views\pelayanan\v_pending.php 169
 ERROR - 2024-08-13 20:06:17 --> Severity: Warning --> Undefined array key "catatan" D:\laragon\www\bsi-helpdesk\application\modules\admin\views\pelayanan\v_pending.php 259
+ERROR - 2024-08-13 20:16:07 --> Severity: Warning --> Undefined array key "lokasi" D:\laragon\www\bsi-helpdesk\application\modules\staff\views\pelayanan\v_pending.php 151
+ERROR - 2024-08-13 20:16:07 --> Severity: Warning --> Undefined array key "kategori" D:\laragon\www\bsi-helpdesk\application\modules\staff\views\pelayanan\v_pending.php 167
+ERROR - 2024-08-13 20:16:07 --> Severity: Warning --> Undefined array key "kategori" D:\laragon\www\bsi-helpdesk\application\modules\staff\views\pelayanan\v_pending.php 169
+ERROR - 2024-08-13 20:16:07 --> Severity: Warning --> Undefined array key "catatan" D:\laragon\www\bsi-helpdesk\application\modules\staff\views\pelayanan\v_pending.php 259
+ERROR - 2024-08-13 20:16:12 --> 404 Page Not Found: ../modules/staff/controllers/Pelayanan/index_acc
+ERROR - 2024-08-13 20:16:17 --> 404 Page Not Found: ../modules/staff/controllers/Pelayanan/index_acc

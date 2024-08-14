@@ -4,9 +4,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_guest extends CI_Model
 {
-
     public function get_guests()
     {
+        $this->db->where_in('keperluan', ['Teknis', 'Aduan']);
         return $this->db->get('guests')->result_array();
     }
 
@@ -25,9 +25,15 @@ class M_guest extends CI_Model
         return $this->db->where('id', $id)->update('guests', $data);
     }
 
-
     public function delete_item($id)
     {
         return $this->db->delete('guests', ['id' => $id]);
+    }
+
+    public function get_guests_by_status($status)
+    {
+        $this->db->where_in('keperluan', ['teknis', 'aduan']);
+        $this->db->where('status', $status);
+        return $this->db->get('guests')->result_array();
     }
 }
