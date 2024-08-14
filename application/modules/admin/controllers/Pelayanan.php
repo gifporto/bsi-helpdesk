@@ -21,6 +21,14 @@ class Pelayanan extends APP_Controller
         $this->load->helper('nohp');
         $this->load->helper('text');
         $this->load->library('user_agent');
+
+        if (!$this->session->userdata('logged_in')) {
+            redirect('guest/dashboard/login');
+        }
+
+        if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 2) {
+            redirect('guest/dashboard/login');
+        }
     }
 
     public function index()

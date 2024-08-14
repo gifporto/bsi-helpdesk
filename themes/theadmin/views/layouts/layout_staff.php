@@ -109,7 +109,7 @@
               </div>
             </div>
           </a>
-          <a class="dropdown-item" href="../page-extra/user-login-3.html"><i class="ti-power-off"></i> Logout</a>
+          <a class="dropdown-item" href="<?= site_url('/guest/login/logout') ?>"><i class="ti-power-off"></i> Logout</a>
         </div>
       </div>
 

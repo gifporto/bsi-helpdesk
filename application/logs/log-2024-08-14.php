@@ -76,3 +76,4 @@ ERROR - 2024-08-14 03:53:23 --> Severity: Warning --> Undefined array key "catat
 ERROR - 2024-08-14 03:58:42 --> 404 Page Not Found: login
 ERROR - 2024-08-14 03:58:47 --> 404 Page Not Found: login
 ERROR - 2024-08-14 04:07:26 --> 404 Page Not Found: akun
+ERROR - 2024-08-14 04:14:41 --> Severity: 8192 --> setcookie(): Passing null to parameter #2 ($value) of type string is deprecated D:\laragon\www\bsi-helpdesk\system\libraries\Session\Session_driver.php 142
