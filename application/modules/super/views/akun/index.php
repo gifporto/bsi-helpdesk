@@ -60,6 +60,7 @@
                         <select class="form-control" id="role_id" name="role_id" required onchange="toggleUnitBSI()">
                             <option value="1">Super Admin</option>
                             <option value="2">Admin</option>
+                            <option value="3">Staff</option>
                         </select>
                     </div>
                     <div class="form-group" id="unit_bsi_field" style="display:none;">
@@ -108,6 +109,7 @@
                             <select class="form-control" id="edit_role_id_<?= $user->id; ?>" name="role_id" required onchange="toggleEditUnitBSI(<?= $user->id; ?>)">
                                 <option value="1" <?= $user->role_name == 'Super Admin' ? 'selected' : ''; ?>>Super Admin</option>
                                 <option value="2" <?= $user->role_name == 'Admin' ? 'selected' : ''; ?>>Admin</option>
+                                <option value="3" <?= $user->role_name == 'Staff' ? 'selected' : ''; ?>>Staff</option>
                             </select>
                         </div>
                         <div class="form-group" id="edit_unit_bsi_field_<?= $user->id; ?>" style="<?= $user->role_name == 'Admin' ? 'display: block;' : 'display: none;'; ?>">
@@ -154,11 +156,13 @@
         const roleSelect = document.getElementById('role_id');
         const unitBSIField = document.getElementById('unit_bsi_field');
         unitBSIField.style.display = roleSelect.value == "2" ? "block" : "none";
+        unitBSIField.style.display = roleSelect.value == "3" ? "block" : "none";
     }
 
     function toggleEditUnitBSI(userId) {
         const roleSelect = document.getElementById(`edit_role_id_${userId}`);
         const unitBSIField = document.getElementById(`edit_unit_bsi_field_${userId}`);
         unitBSIField.style.display = roleSelect.value == "2" ? "block" : "none";
+        unitBSIField.style.display = roleSelect.value == "3" ? "block" : "none";
     }
 </script>

@@ -39,7 +39,7 @@ class Akun extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('/akun/index');
+            redirect('super/akun/index');
         } else {
             $data = array(
                 'name' => $this->input->post('name'),
@@ -48,21 +48,18 @@ class Akun extends CI_Controller
                 'role_id' => $this->input->post('role_id')
             );
 
-            if ($this->input->post('role_id') == 2) { // 2 = Admin Role ID
+            if ($this->input->post('role_id') == 2 || $this->input->post('role_id') == 3) { // 2 = Admin Role ID
                 $data['unit_bsi'] = $this->input->post('unit_bsi');
             }
 
             $this->m_user->create_user($data);
 
-            if (!$this->session->userdata('logged_in')) {
-                redirect('login');
-            }
-
-            if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
-                redirect('guest/dashboard/login');
-            }
+            // Redirect to a different page after successful save
+            $this->session->set_flashdata('success', 'Data successfully saved!');
+            redirect('super/akun/index');
         }
     }
+
 
     public function update()
     {
@@ -72,7 +69,7 @@ class Akun extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('/akun/index');
+            redirect('super/akun/index');
         } else {
             $id = $this->input->post('id');
             $data = array(

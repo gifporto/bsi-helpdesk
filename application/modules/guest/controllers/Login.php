@@ -41,14 +41,30 @@ class Login extends APP_Controller
                 'logged_in' => true
             ]);
 
-            // Redirect ke halaman dashboard
-            redirect('/super/superadmin');
+            // Redirect ke halaman sesuai dengan peran pengguna
+            switch ($user->role_id) {
+                case 1:
+                    redirect('/super/superadmin');
+                    break;
+                case 2:
+                    redirect('/admin/dashboard');
+                    break;
+                case 3:
+                    redirect('/staff/dashboard');
+                    break;
+                default:
+                    // Jika role tidak dikenal, redirect ke halaman login
+                    $this->session->set_flashdata('error', 'Peran pengguna tidak dikenal');
+                    redirect('/guest/login');
+                    break;
+            }
         } else {
             // Jika login gagal, tampilkan pesan error
-            $this->session->set_flashdata('error', 'email atau password salah');
+            $this->session->set_flashdata('error', 'Email atau password salah');
             redirect('/guest/login');
         }
     }
+
 
     public function logout()
     {

@@ -17,7 +17,7 @@ class SuperAdmin extends CI_Controller
         $this->load->model('m_role');
 
         if (!$this->session->userdata('logged_in')) {
-            redirect('login');
+            redirect('guest/dashboard/login');
         }
 
         if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
