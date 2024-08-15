@@ -1,3 +1,5 @@
+http://localhost/bsi-helpdesk/index.php/seeder/index
+
 super admin bisa approve
 pending jadi respon
  semua input masuk ke bu uut - approve

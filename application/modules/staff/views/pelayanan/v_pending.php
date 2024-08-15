@@ -69,7 +69,7 @@
                                     <button class="btn btn-sm btn-bold btn-round btn-secondary"><?= $guest['status'] ?></button>
                                 </div>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center d-flex">
                                 <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
                                 <button class="btn btn-primary btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')" title="Proses"><i class="fa fa-hourglass-1"></i></button>
