@@ -34,4 +34,15 @@ class Seeder extends CI_Controller
 
         echo "Data dummy berhasil dimasukkan!";
     }
+
+    public function clear()
+    {
+        // Memanggil model jika diperlukan
+        // $this->load->model('Your_model'); // Uncomment and replace 'Your_model' if using a model
+
+        // Menghapus semua data dari tabel 'guests'
+        $this->db->truncate('guests');
+
+        echo "Semua data dalam tabel 'guests' telah dihapus!";
+    }
 }
