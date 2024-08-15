@@ -76,7 +76,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center d-flex">
                                 <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
                                     <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
