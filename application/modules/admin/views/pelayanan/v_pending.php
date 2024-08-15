@@ -75,9 +75,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')"><i class="bi bi-hand-thumbs-up"></i></button>
-                                <button class="btn btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)"><i class="fa fa-close"></i></button>
+                                <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
+                                <button class="btn btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                             </td>
                         </tr>
                     <?php } ?>
