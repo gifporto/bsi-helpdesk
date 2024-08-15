@@ -32,7 +32,7 @@ class M_guest extends CI_Model
 
     public function get_guests_by_status($status)
     {
-        $this->db->where_in('keperluan', ['teknis', 'aduan']);
+        $this->db->where_in('jenis_keperluan', ['teknis', 'aduan']);
         $this->db->where('status', $status);
         return $this->db->get('guests')->result_array();
     }

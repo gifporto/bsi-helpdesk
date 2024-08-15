@@ -60,6 +60,12 @@
                 <span class="title">Pending</span>
               </a>
             </li>
+            <li class="menu-item <?= $page_active == 'pelayanan_respon' ? 'active' : '' ?>">
+              <a class="menu-link" href="<?= site_url('staff/pelayanan/index_respon'); ?>">
+                <span class="dot"></span>
+                <span class="title">Respon</span>
+              </a>
+            </li>
             <li class="menu-item <?= $page_active == 'pelayanan_proses' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('staff/pelayanan/index_proses'); ?>">
                 <span class="dot"></span>

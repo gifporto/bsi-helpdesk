@@ -113,6 +113,14 @@ class Pelayanan extends APP_Controller
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
+    public function index_respon()
+    {
+        $data['title'] = 'Pelayanan Buku Tamu';
+        $data['page_active'] = 'pelayanan_respon';
+        $data['guests'] = $this->M_guest->get_guests_by_status('Respon'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $this->template->build($this->module . '/pelayanan/v_respon', $data);
+    }
+
     public function index_proses()
     {
         $data['title'] = 'Pelayanan Buku Tamu';
@@ -124,7 +132,7 @@ class Pelayanan extends APP_Controller
     public function index_selesai()
     {
         $data['title'] = 'Pelayanan Buku Tamu';
-        $data['page_active'] = 'pelayanan_acc';
+        $data['page_active'] = 'pelayanan_selesai';
         $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }

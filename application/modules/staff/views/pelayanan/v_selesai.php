@@ -43,6 +43,7 @@
                         <th class="font-weight-bold">Nama</th>
                         <th class="font-weight-bold">Instansi</th>
                         <th class="font-weight-bold">Unit BSI</th>
+                        <th class="font-weight-bold">Jenis Keperluan</th>
                         <th class="font-weight-bold">Keperluan</th>
                         <th class="font-weight-bold">Status</th>
                     </tr>
@@ -60,17 +61,11 @@
                             <td><?= $guest['nama'] ?></td>
                             <td><?= $guest['instansi'] ?></td>
                             <td><?= $guest['unit_bsi'] ?></td>
+                            <td><?= $guest['jenis_keperluan'] ?></td>
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
-                                    <button class="btn btn-sm btn-bold btn-round 
-                    <?php
-                        if ($guest['status'] == 'ACC') {
-                            echo 'btn-success';
-                        } else {
-                            echo 'btn-secondary';
-                        } ?>"
-                                        onclick="updateStatus(<?= $guest['id'] ?>, 'ACC')"><?= $guest['status'] ?>
+                                    <button class="btn btn-sm btn-bold btn-round btn-success"><?= $guest['status'] ?>
                                     </button>
                                 </div>
                             </td>
