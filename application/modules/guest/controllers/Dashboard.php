@@ -29,13 +29,13 @@ class Dashboard extends APP_Controller
         $data = array(
             'nama' => $this->input->post('nama'),
             'telp' => $this->input->post('telp'),
-            'keperluan' => $this->input->post('keperluan'),
             'unit_bsi' => $this->input->post('unit_bsi'),
+            'jenis_keperluan' => $this->input->post('jenis_keperluan'),
+            'keperluan' => $this->input->post('keperluan'),
             'status' => 'Pending',
             'created_at' => date('Y-m-d H:i:s'),
         );
 
-        // Memeriksa apakah kategori adalah internal atau eksternal
         $kategori = $this->input->post('kategori');
         if ($kategori === 'Internal') {
             $data['instansi'] = $this->input->post('internal');

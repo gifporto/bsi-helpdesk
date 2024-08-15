@@ -43,38 +43,40 @@
                         <th class="font-weight-bold">Nama</th>
                         <th class="font-weight-bold">Instansi</th>
                         <th class="font-weight-bold">Unit BSI</th>
+                        <th class="font-weight-bold">Jenis Keperluan</th>
                         <th class="font-weight-bold">Keperluan</th>
                         <th class="font-weight-bold">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                    <tr>
-                        <td>
-                            <?php
-                            $date = new DateTime($guest['created_at']);
-                            $formatted_date = $date->format('d F Y H:i');
-                            ?>
-                            <?= $formatted_date ?>
-                        </td>
-                        <td><?= $guest['nama'] ?></td>
-                        <td><?= $guest['instansi'] ?></td>
-                        <td><?= $guest['unit_bsi'] ?></td>
-                        <td><?= $guest['keperluan'] ?></td>
-                        <td>
-                            <div class="media-right">
-                                <button
-                                    class="btn btn-sm btn-bold btn-round 
+                        <tr>
+                            <td>
+                                <?php
+                                $date = new DateTime($guest['created_at']);
+                                $formatted_date = $date->format('d F Y H:i');
+                                ?>
+                                <?= $formatted_date ?>
+                            </td>
+                            <td><?= $guest['nama'] ?></td>
+                            <td><?= $guest['instansi'] ?></td>
+                            <td><?= $guest['unit_bsi'] ?></td>
+                            <td><?= $guest['jenis_keperluan'] ?></td>
+                            <td><?= $guest['keperluan'] ?></td>
+                            <td>
+                                <div class="media-right">
+                                    <button
+                                        class="btn btn-sm btn-bold btn-round 
                     <?php
-                    if ($guest['status'] == 'Selesai') {
-                        echo 'btn-success';
-                    } else {
-                        echo 'btn-secondary';
-                    } ?>"><?= $guest['status'] ?>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                        if ($guest['status'] == 'Selesai') {
+                            echo 'btn-success';
+                        } else {
+                            echo 'btn-secondary';
+                        } ?>"><?= $guest['status'] ?>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>

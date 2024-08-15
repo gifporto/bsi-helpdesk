@@ -43,6 +43,7 @@
                         <th class="font-weight-bold">Nama</th>
                         <th class="font-weight-bold">Instansi</th>
                         <th class="font-weight-bold">Unit BSI</th>
+                        <th class="font-weight-bold">Jenis Keperluan</th>
                         <th class="font-weight-bold">Keperluan</th>
                         <th class="font-weight-bold">Status</th>
                         <th class="font-weight-bold">Aksi</th>
@@ -61,6 +62,7 @@
                             <td><?= $guest['nama'] ?></td>
                             <td><?= $guest['instansi'] ?></td>
                             <td><?= $guest['unit_bsi'] ?></td>
+                            <td><?= $guest['jenis_keperluan'] ?></td>
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
@@ -76,7 +78,9 @@
                             </td>
                             <td class="text-center">
                                 <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
-                                <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
+                                <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
+                                    <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
+                                <?php } ?>
                                 <button class="btn btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                             </td>
                         </tr>

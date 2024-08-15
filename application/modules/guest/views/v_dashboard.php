@@ -5,9 +5,7 @@ $nohp = hp('085322471629');
 $message = '&text=' . urlencode('Pengajuan anda sedang dalam proses');
 // cek user_agent / device yang digunakan user
 // kalau mobile maka pakai api.whatsapp.com
-$linkWA = $this->agent->is_mobile()
-    ? 'https://api.whatsapp.com/send?phone=' . $nohp . $message
-    : 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
+$linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $nohp . $message : 'https://web.whatsapp.com/send?phone=' . $nohp . $message;
 ?>
 
 <div class="col-12">
@@ -20,22 +18,37 @@ $linkWA = $this->agent->is_mobile()
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label class="text-dark require">Nama</label>
-                        <input id="nama" name="nama" class="form-control" type="text" placeholder="Nama Lengkap" required>
+                        <input id="nama" name="nama" class="form-control" type="text"
+                            placeholder="Nama Lengkap" required>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label class="text-dark require">No.HP</label>
-                        <input id="telp" name="telp" class="form-control" type="text" placeholder="08xxxxxxxxxx" required>
+                        <input id="telp" name="telp" class="form-control" type="text"
+                            placeholder="08xxxxxxxxxx" required>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-6">
                         <label class="text-dark require">Asal Instansi</label>
-                        <select class="form-control" id="kategoriSelect" onchange="tampilkanDatas()" name="kategori" required>
+                        <select class="form-control" id="kategoriSelect" onchange="tampilkanDatas()" name="kategori"
+                            required>
                             <option value="">Pilih Kategori</option>
                             <option value="Internal">Internal</option>
                             <option value="Eksternal">Eksternal</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="text-dark require">Unit BSI</label>
+                        <select class="form-control" id="unit_bsi" name="unit_bsi" required>
+                            <option value="">Pilih Unit BSI</option>
+                            <option value="1">BSI 1</option>
+                            <option value="2">BSI 2</option>
+                            <option value="3">BSI 3</option>
+                            <option value="4">BSI 4</option>
+                            <option value="5">BSI 5</option>
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -57,27 +70,20 @@ $linkWA = $this->agent->is_mobile()
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label class="text-dark require">Unit BSI</label>
-                        <select class="form-control" id="unit_bsi" name="unit_bsi" required>
-                            <option value="">Pilih Unit BSI</option>
-                            <option value="1">BSI 1</option>
-                            <option value="2">BSI 2</option>
-                            <option value="3">BSI 3</option>
-                            <option value="4">BSI 4</option>
-                            <option value="5">BSI 5</option>
-                        </select>
-                        <div class="invalid-feedback"></div>
-                    </div>
 
                     <div class="form-group col-lg-6">
                         <label class="text-dark require">Jenis Keperluan</label>
-                        <select class="form-control" id="keperluan" name="keperluan" required>
+                        <select class="form-control" id="jenis_keperluan" name="jenis_keperluan" required>
                             <option value="">Pilih Jenis Keperluan</option>
                             <option value="Teknis">Teknis</option>
                             <option value="Aduan">Aduan</option>
                             <option value="Tamu">Tamu</option>
                         </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="text-dark require">Keperluan</label>
+                        <textarea class="form-control" name="keperluan" id="keperluan" rows="3"></textarea>
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
