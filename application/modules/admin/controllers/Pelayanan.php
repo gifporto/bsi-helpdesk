@@ -109,15 +109,15 @@ class Pelayanan extends APP_Controller
     {
         $data['title'] = 'Pelayanan Buku Tamu';
         $data['page_active'] = 'pelayanan_pending';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Pending'); // Ambil data dengan status 'Pending'
+        $data['guests'] = $this->M_guest->get_all_guests_by_status('Pending'); // Ambil data dengan status 'Pending'
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
-    public function index_acc()
+    public function index_selesai()
     {
         $data['title'] = 'Pelayanan Buku Tamu';
-        $data['page_active'] = 'pelayanan_acc';
-        $data['guests'] = $this->M_guest->get_guests_by_status('ACC'); // Ambil data dengan status 'ACC'
-        $this->template->build($this->module . '/pelayanan/v_acc', $data);
+        $data['page_active'] = 'pelayanan_selesai';
+        $data['guests'] = $this->M_guest->get_guests_by_status('Selesai'); // Ambil data dengan status 'ACC'
+        $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
 }

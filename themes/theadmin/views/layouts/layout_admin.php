@@ -47,7 +47,7 @@
           </a>
         </li>
 
-        <li class="menu-item open <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?><?= $page_active == 'pelayanan_acc' ? 'active' : '' ?>">
+        <li class="menu-item open <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?><?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
           <a class="menu-link menu-color">
             <i class="bi bi-inboxes-fill"></i>
             <span class="title">Pelayanan</span>
@@ -64,10 +64,10 @@
             <?php
             $activeTitles = ['Kebutuan Dana CSR', 'Detail'];
             ?>
-            <li class="menu-item <?= $page_active == 'pelayanan_acc' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('admin/pelayanan/index_acc'); ?>">
+            <li class="menu-item <?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
+              <a class="menu-link" href="<?= site_url('admin/pelayanan/index_selesai'); ?>">
                 <span class="dot"></span>
-                <span class="title">ACC</span>
+                <span class="title">Selesai</span>
               </a>
             </li>
 

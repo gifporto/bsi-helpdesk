@@ -30,6 +30,12 @@ class M_guest extends CI_Model
         return $this->db->delete('guests', ['id' => $id]);
     }
 
+    public function get_all_guests_by_status($status)
+    {
+        $this->db->where('status', $status);
+        return $this->db->get('guests')->result_array();
+    }
+
     public function get_guests_by_status($status)
     {
         $this->db->where('keperluan', 'tamu');

@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="ml-2">
-                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export'); ?>">Cetak<i
+                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export') ?>">Cetak<i
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
@@ -49,32 +49,32 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                        <tr>
-                            <td>
-                                <?php
-                                $date = new DateTime($guest['created_at']);
-                                $formatted_date = $date->format('d F Y H:i');
-                                ?>
-                                <?= $formatted_date ?>
-                            </td>
-                            <td><?= $guest['nama'] ?></td>
-                            <td><?= $guest['instansi'] ?></td>
-                            <td><?= $guest['unit_bsi'] ?></td>
-                            <td><?= $guest['keperluan'] ?></td>
-                            <td>
-                                <div class="media-right">
-                                    <button class="btn btn-sm btn-bold btn-round 
+                    <tr>
+                        <td>
+                            <?php
+                            $date = new DateTime($guest['created_at']);
+                            $formatted_date = $date->format('d F Y H:i');
+                            ?>
+                            <?= $formatted_date ?>
+                        </td>
+                        <td><?= $guest['nama'] ?></td>
+                        <td><?= $guest['instansi'] ?></td>
+                        <td><?= $guest['unit_bsi'] ?></td>
+                        <td><?= $guest['keperluan'] ?></td>
+                        <td>
+                            <div class="media-right">
+                                <button
+                                    class="btn btn-sm btn-bold btn-round 
                     <?php
-                        if ($guest['status'] == 'ACC') {
-                            echo 'btn-success';
-                        } else {
-                            echo 'btn-secondary';
-                        } ?>"
-                                        onclick="updateStatus(<?= $guest['id'] ?>, 'ACC')"><?= $guest['status'] ?>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                    if ($guest['status'] == 'Selesai') {
+                        echo 'btn-success';
+                    } else {
+                        echo 'btn-secondary';
+                    } ?>"><?= $guest['status'] ?>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -251,8 +251,7 @@
                 <div class="form-group row">
                     <label class="text-dark col-4 col-lg-2 col-form-label">Catatan</label>
                     <div class="col-8 col-lg-10">
-                        <textarea id="catatan" name="catatan" class="form-control" rows="5"
-                            placeholder="Catatan.."><?= $guest['catatan'] ?></textarea>
+                        <textarea id="catatan" name="catatan" class="form-control" rows="5" placeholder="Catatan.."><?= $guest['catatan'] ?></textarea>
                     </div>
                 </div>
 
