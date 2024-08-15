@@ -22,6 +22,10 @@ class ComposerStaticInit70bff8aec37c82a5358d82e1f52c1a87
         array (
             'Matrix\\' => 7,
         ),
+        'F' => 
+        array (
+            'Faker\\' => 6,
+        ),
         'C' => 
         array (
             'Complex\\' => 8,
@@ -53,6 +57,10 @@ class ComposerStaticInit70bff8aec37c82a5358d82e1f52c1a87
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Complex\\' => 
         array (
