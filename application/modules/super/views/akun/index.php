@@ -70,7 +70,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-sm  btn-round btn-custom">Simpan</button>
+                    <button type="submit" class="btn btn-sm btn-round btn-custom">Simpan</button>
                 </div>
             </form>
         </div>
