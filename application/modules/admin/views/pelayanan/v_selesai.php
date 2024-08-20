@@ -66,7 +66,7 @@
                             <td>
                                 <div class="media-right">
                                     <button
-                                        class="btn btn-sm btn-bold btn-round 
+                                        class="btn btn-flat btn-sm btn-bold btn-round 
                     <?php
                         if ($guest['status'] == 'Selesai') {
                             echo 'btn-success';

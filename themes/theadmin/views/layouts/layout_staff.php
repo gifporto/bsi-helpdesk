@@ -47,7 +47,7 @@
           </a>
         </li>
 
-        <li class="menu-item open <?= $page_active == 'pelayanan' ? 'active open' : '' ?>">
+        <li class="menu-item <?= $page_active == 'pelayanan' ? 'active open' : '' ?>">
           <a class="menu-link menu-color">
             <i class="bi bi-inboxes-fill"></i>
             <span class="title">Pelayanan</span>

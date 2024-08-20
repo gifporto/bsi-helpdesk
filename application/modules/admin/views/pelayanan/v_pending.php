@@ -66,7 +66,7 @@
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
-                                    <button class="btn btn-sm btn-bold btn-round 
+                                    <button class="btn btn-flat btn-sm btn-bold btn-round 
                     <?php
                         if ($guest['status'] == 'ACC') {
                             echo 'btn-success';
@@ -77,11 +77,11 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <button class="btn btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-round btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
-                                    <button class="btn btn-info btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
+                                    <button class="btn btn-round btn-info btn-square text-center mx-2" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
                                 <?php } ?>
-                                <button class="btn btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
+                                <button class="btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                             </td>
                         </tr>
                     <?php } ?>

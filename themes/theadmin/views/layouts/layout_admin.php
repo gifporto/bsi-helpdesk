@@ -47,24 +47,22 @@
           </a>
         </li>
 
-        <li class="menu-item open <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?><?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
+        <li class="menu-item <?= $page_active == 'pelayanan' ? 'active open' : '' ?>">
           <a class="menu-link menu-color">
             <i class="bi bi-inboxes-fill"></i>
             <span class="title">Pelayanan</span>
+            <span class="arrow"></span>
           </a>
 
           <ul class="menu-submenu">
-            <li class="menu-item <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Pending' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('admin/pelayanan/index_pending'); ?>">
                 <span class="dot"></span>
                 <span class="title">Pending</span>
               </a>
             </li>
 
-            <?php
-            $activeTitles = ['Kebutuan Dana CSR', 'Detail'];
-            ?>
-            <li class="menu-item <?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Selesai' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('admin/pelayanan/index_selesai'); ?>">
                 <span class="dot"></span>
                 <span class="title">Selesai</span>
