@@ -21,8 +21,8 @@
                             <small class="text-fader"><?= $user->role_name; ?></small>
                         </div>
                         <div class="media-right">
-                            <a href="#" data-toggle="modal" data-target="#modal_edit_<?= $user->id; ?>" class="btn btn-square btn-round btn-success"><i class="fa fa-pencil"></i></a>
-                            <a href="#" data-toggle="modal" data-target="#modal_delete_<?= $user->id; ?>" class="btn btn-square btn-round btn-danger"><i class="fa fa-trash"></i></a>
+                            <button class="ml-1 btn btn-round btn-secondary btn-square text-center" data-toggle="modal" data-target="#modal_edit_<?= $user->id; ?>"><i class="fa fa-pencil"></i></button>
+                            <button class="ml-1 btn btn-round btn-danger btn-square text-center" data-toggle="modal" data-target="#modal_delete_<?= $user->id; ?>"><i class="fa fa-trash"></i></button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-round btn-custom">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-sm  btn-round btn-custom">Simpan</button>
                 </div>
             </form>
         </div>
