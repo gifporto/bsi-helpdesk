@@ -72,7 +72,7 @@
                             <td class="text-center d-flex">
                                 <button class="mr-1 btn btn-round btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <button class="mx-1 btn btn-round btn-primary btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')" title="Proses"><i class="fa fa-hourglass-1"></i></button>
-                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
                                 <button class="ml-1 btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                                 <!-- btn-round -->
                             </td>
@@ -84,38 +84,41 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal_pesan" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createUserModalLabel">Buat Pengguna Baru</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<?php foreach ($guests as $guest) : ?>
+    <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createUserModalLabel">Kirim Pesan WhatsApp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo site_url('staff/pelayanan/send_wa'); ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_respon">
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="telp">Telp</label>
+                            <input type="text" class="form-control" name="telp" value="<?= $guest['telp'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="pesan">Pesan</label>
+                            <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
+                    </div>
+                </form>
             </div>
-            <form action="<?php echo site_url('super/akun/store'); ?>" method="post">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <p type="text" class="form-control">Ama</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Telp</label>
-                        <p type="text" class="form-control">08</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="pesan">Email</label>
-                        <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-sm btn-round btn-custom">Simpan</button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
+<?php endforeach; ?>
 
 
 <script>

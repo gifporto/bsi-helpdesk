@@ -145,13 +145,19 @@ class Pelayanan extends APP_Controller
         $message = $this->input->post('pesan');
         $token = 'NBnFwCY+zX58mvYh-RtN';
 
+        $redirect_to = $this->input->post('redirect_to');
+
         $response = send_message($target, $message, $token);
 
         if ($response['status'] == 'success') {
-            echo $response['response'];
+            $this->session->set_flashdata('notification', 'Pesan berhasil dikirim!');
+            $this->session->set_flashdata('alert_type', 'success');
         } else {
-            echo 'Error: ' . $response['message'];
+            $this->session->set_flashdata('notification', 'Error: ' . $response['message']);
+            $this->session->set_flashdata('alert_type', 'danger');
         }
+
+        redirect($redirect_to);
     }
 
 }

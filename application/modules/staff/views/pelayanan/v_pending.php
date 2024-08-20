@@ -92,13 +92,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createUserModalLabel">Buat Pengguna Baru</h5>
+                    <h5 class="modal-title" id="createUserModalLabel">Kirim Pesan WhatsApp</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form action="<?php echo site_url('staff/pelayanan/send_wa'); ?>" method="post">
                     <div class="modal-body">
+                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_pending">
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>" readonly>

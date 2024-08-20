@@ -46,6 +46,7 @@
                         <th class="font-weight-bold">Jenis Keperluan</th>
                         <th class="font-weight-bold">Keperluan</th>
                         <th class="font-weight-bold">Status</th>
+                        <th class="font-weight-bold">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +70,9 @@
                                     </button>
                                 </div>
                             </td>
+                            <td class="text-center d-flex">
+                                <button class="mx-2 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -77,6 +81,41 @@
     </div>
 </div>
 
+<?php foreach ($guests as $guest) : ?>
+    <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createUserModalLabel">Kirim Pesan WhatsApp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo site_url('staff/pelayanan/send_wa'); ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_selesai">
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="telp">Telp</label>
+                            <input type="text" class="form-control" name="telp" value="<?= $guest['telp'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="pesan">Pesan</label>
+                            <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 
 <script>
     $(document).ready(function() {
