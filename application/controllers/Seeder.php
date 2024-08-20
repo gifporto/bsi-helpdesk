@@ -19,7 +19,7 @@ class Seeder extends CI_Controller
             $data = [
                 'id' => $faker->unique()->numberBetween(100, 999),
                 'nama' => $faker->name,
-                'telp' => '085861209132',
+                'telp' => '085713667446',
                 'instansi' => $faker->company,
                 'unit_bsi' => $faker->randomElement(['BSI 1', 'BSI 2', 'BSI 3', 'BSI 4', 'BSI 5']),
                 'jenis_keperluan' => $faker->randomElement(['Tamu', 'Teknis', 'Aduan']),
