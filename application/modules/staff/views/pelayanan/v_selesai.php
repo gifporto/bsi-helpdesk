@@ -65,7 +65,7 @@
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
-                                    <button class="btn btn-sm btn-bold btn-round btn-success"><?= $guest['status'] ?>
+                                    <button class="btn btn-flat btn-sm btn-bold btn-round btn-success"><?= $guest['status'] ?>
                                     </button>
                                 </div>
                             </td>
