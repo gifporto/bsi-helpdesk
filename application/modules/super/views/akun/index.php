@@ -118,8 +118,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-round btn-custom">Simpan</button>
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-custom">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -142,8 +142,8 @@
                         <p>Apakah Anda yakin ingin menghapus pengguna ini?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-round btn-danger">Hapus</button>
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-danger">Hapus</button>
                     </div>
                 </form>
             </div>
