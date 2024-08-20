@@ -1,44 +1,28 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Pelayanan extends APP_Controller
+class Pelayanan extends CI_Controller
 {
-    private $module = 'staff';
+    private $module = 'super';
 
     public function __construct()
     {
         parent::__construct();
-        $this->template->set_layout('layout_staff')
+        $this->load->model('M_guest');
+        $this->load->helper(['url', 'download', 'text']);
+        $this->load->library(['user_agent', 'template', 'asset']);
+
+        $this->template->set_layout('layout_super')
             ->set_partial('modules_js', 'modules_js')
             ->set_partial('modules_css', 'modules_css');
         $this->asset->set_theme($this->config->item('theme'));
 
-        $this->load->model('M_guest');
-        $this->load->helper('nohp');
-        $this->load->helper('text');
-        $this->load->library('user_agent');
-        $this->load->helper('fonnte_helper');
-
-
-        if (!$this->session->userdata('logged_in')) {
-            redirect('guest/dashboard/login');
+        if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
+            redirect('login');
         }
-
-        if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 3) {
-            redirect('guest/dashboard/login');
-        }
-    }
-
-    public function index()
-    {
-        $data['title'] = 'Pelayanan Buku Tamu';
-        $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests();
-        $this->template->build($this->module . '/v_pelayanan', $data);
     }
 
     public function update_status()
@@ -46,17 +30,20 @@ class Pelayanan extends APP_Controller
         $id = $this->input->post('id');
         $status = $this->input->post('status');
 
-        $data = array('status' => $status);
-        $this->M_guest->update_guests($id, $data);
-
-        echo json_encode(['success' => true]);
+        if ($id && $status) {
+            $data = ['status' => $status];
+            $this->M_guest->update_guests($id, $data);
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Invalid input.']);
+        }
     }
 
     public function destroy()
     {
         $id = $this->input->post('id');
 
-        if ($this->M_guest->delete_item($id)) {
+        if ($id && $this->M_guest->delete_item($id)) {
             echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
@@ -65,25 +52,21 @@ class Pelayanan extends APP_Controller
 
     public function export()
     {
-        $this->load->helper('download');
-
         $data = $this->M_guest->get_guests();
 
         if (empty($data)) {
-            echo "Tidak ada data untuk diekspor";
-            exit;
+            show_error("Tidak ada data untuk diekspor", 404);
+            return;
         }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
         // Header kolom
-        $sheet->setCellValue('A1', 'Nama');
-        $sheet->setCellValue('B1', 'Telepon');
-        $sheet->setCellValue('C1', 'Keperluan');
-        $sheet->setCellValue('D1', 'Tanggal');
-        $sheet->setCellValue('E1', 'Status');
-        $sheet->setCellValue('F1', 'Instansi/Eksternal');
+        $headers = ['Nama', 'Telepon', 'Keperluan', 'Tanggal', 'Status', 'Instansi/Eksternal'];
+        foreach ($headers as $key => $header) {
+            $sheet->setCellValue(chr(65 + $key) . '1', $header);
+        }
 
         // Data
         $row = 2;
@@ -93,7 +76,7 @@ class Pelayanan extends APP_Controller
             $sheet->setCellValue('C' . $row, $row_data['keperluan']);
             $sheet->setCellValue('D' . $row, $row_data['created_at']);
             $sheet->setCellValue('E' . $row, $row_data['status']);
-            $sheet->setCellValue('F' . $row, $row_data['instansi'] ? $row_data['instansi'] : 'Tidak ada');
+            $sheet->setCellValue('F' . $row, $row_data['instansi'] ?? 'Tidak ada');
             $row++;
         }
 
@@ -107,33 +90,41 @@ class Pelayanan extends APP_Controller
 
     public function index_pending()
     {
-        $data['title'] = 'Pelayanan Buku Tamu Pending';
-        $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Pending'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $data = [
+            'title' => 'Pelayanan Buku Tamu Pending',
+            'page_active' => 'pelayanan',
+            'guests' => $this->M_guest->get_guests('Pending')
+        ];
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
     public function index_respon()
     {
-        $data['title'] = 'Pelayanan Buku Tamu Respon';
-        $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Respon'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $data = [
+            'title' => 'Pelayanan Buku Tamu Respon',
+            'page_active' => 'pelayanan',
+            'guests' => $this->M_guest->get_guests('Respon')
+        ];
         $this->template->build($this->module . '/pelayanan/v_respon', $data);
     }
 
     public function index_proses()
     {
-        $data['title'] = 'Pelayanan Buku Tamu Proses';
-        $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Proses');
+        $data = [
+            'title' => 'Pelayanan Buku Tamu Proses',
+            'page_active' => 'pelayanan',
+            'guests' => $this->M_guest->get_guests('Proses')
+        ];
         $this->template->build($this->module . '/pelayanan/v_proses', $data);
     }
 
     public function index_selesai()
     {
-        $data['title'] = 'Pelayanan Buku Tamu Selesai';
-        $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
+        $data = [
+            'title' => 'Pelayanan Buku Tamu Selesai',
+            'page_active' => 'pelayanan',
+            'guests' => $this->M_guest->get_guests('Selesai')
+        ];
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
 
@@ -142,8 +133,7 @@ class Pelayanan extends APP_Controller
         $target = $this->input->post('telp');
         $message = $this->input->post('pesan');
         $token = 'NBnFwCY+zX58mvYh-RtN';
-
-        $redirect_to = $this->input->post('redirect_to');
+        $redirect_to = $this->input->post('redirect_to') ?? 'staff/pelayanan/index_pending'; // Default redirect
 
         $response = send_message($target, $message, $token);
 
@@ -155,7 +145,7 @@ class Pelayanan extends APP_Controller
             $this->session->set_flashdata('alert_type', 'danger');
         }
 
+        // Pastikan redirect_to valid dan aman
         redirect($redirect_to);
     }
-
 }

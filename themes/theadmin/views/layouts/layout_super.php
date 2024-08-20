@@ -7,7 +7,7 @@
     <meta name="description" content="Responsive admin dashboard and web application ui kit." />
     <meta name="keywords" content="dashboard, index, main" />
 
-    <title><?= $title; ?> | Helpdesk BSI</title>
+    <title><?= $title ?> | Helpdesk BSI</title>
 
     <!-- Bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -33,7 +33,8 @@
     <!-- Sidebar -->
     <aside class="sidebar sidebar-light sidebar-expand-lg">
         <header class="sidebar-header justify-content-center align-items-center">
-            <div class="m-1" href=""><img src="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" alt="logo icon" style="width: 32px;"></div>
+            <div class="m-1" href=""><img src="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>"
+                    alt="logo icon" style="width: 32px;"></div>
             <a class="text1">Helpdesk BSI.</a>
         </header>
 
@@ -41,85 +42,51 @@
             <ul class="menu menu-sm menu-bordery">
 
                 <li class="menu-item <?= $page_active == 'dashboard' ? 'active' : '' ?>">
-                    <a class="menu-link menu-color" href="<?= site_url('super/superadmin'); ?>">
+                    <a class="menu-link menu-color" href="<?= site_url('super/superadmin') ?>">
                         <i class="bi bi-grid"></i>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
 
-                <li class="menu-item <?= $page_active == 'rekap' ? 'active' : '' ?>">
-                    <a class="menu-link menu-color" href="<?= site_url('super/rekap'); ?>">
+                <li class="menu-item <?= $page_active == 'pelayanan' ? 'active open' : '' ?>">
+                    <a class="menu-link menu-color">
                         <i class="bi bi-inboxes-fill"></i>
-                        <span class="title">Rekapitulasi</span>
+                        <span class="title">Pelayanan</span>
                     </a>
+                    <ul class="menu-submenu">
+                        <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Pending' ? 'active' : '' ?>">
+                            <a class="menu-link" href="<?= site_url('super/pelayanan/index_pending') ?>">
+                                <span class="dot"></span>
+                                <span class="title">Pending</span>
+                            </a>
+                        </li>
+                        <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Respon' ? 'active' : '' ?>">
+                            <a class="menu-link" href="<?= site_url('super/pelayanan/index_respon') ?>">
+                                <span class="dot"></span>
+                                <span class="title">Respon</span>
+                            </a>
+                        </li>
+                        <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Proses' ? 'active' : '' ?>">
+                            <a class="menu-link" href="<?= site_url('super/pelayanan/index_proses') ?>">
+                                <span class="dot"></span>
+                                <span class="title">Proses</span>
+                            </a>
+                        </li>
+                        <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Selesai' ? 'active' : '' ?>">
+                            <a class="menu-link" href="<?= site_url('super/pelayanan/index_selesai') ?>">
+                                <span class="dot"></span>
+                                <span class="title">Selesai</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="menu-item <?= $page_active == 'akun' ? 'active' : '' ?>">
-                    <a class="menu-link menu-color" href="<?= site_url('super/akun'); ?>">
+                    <a class="menu-link menu-color" href="<?= site_url('super/akun') ?>">
                         <i class="bi bi-person-gear"></i>
                         <span class="title">Manajemen Akun</span>
                     </a>
                 </li>
-
-
-                <!-- <li class="menu-item <?= $page_active == 'data' ? 'active open' : '' ?>">
-          <a class="menu-link menu-color" href="#">
-            <i class="bi bi-envelope-paper"></i>
-            <span class="title">Data</span>
-            <span class="arrow"></span>
-          </a>
-
-          <ul class="menu-submenu">
-            <?php
-            $activeTitles = ['Penawaran CSR', 'Detail'];
-            ?>
-            <li class="menu-item <?= in_array($title, $activeTitles) ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/Data/penawarancsr'); ?>">
-                <span class="dot"></span>
-                <span class="title">Penawaran CSR</span>
-              </a>
-            </li>
-
-            <?php
-            $activeTitles = ['Kebutuan Dana CSR', 'Detail'];
-            ?>
-            <li class="menu-item <?= in_array($title, $activeTitles) ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/Data/kebutuhandanacsr'); ?>">
-                <span class="dot"></span>
-                <span class="title">Kebutuan dana CSR</span>
-              </a>
-            </li>
-
-          </ul>
-        </li>
-
-        <li class="menu-item <?= $page_active == 'rekapdata' ? 'active open' : '' ?>">
-          <a class="menu-link menu-color active" href="#">
-            <i class="bi bi-inboxes"></i>
-            <span class="title">Rekap Data</span>
-            <span class="arrow"></span>
-          </a>
-          <ul class="menu-submenu">
-            <li class="menu-item <?= $title == 'Penawaran per Periode' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/penawaranperperiode'); ?>">
-                <span class="dot"></span>
-                <span class="title">Penawaran per periode</span>
-              </a>
-            </li>
-            <li class="menu-item <?= $title == 'Usulan Kebutuan Dana CSR per Periode' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/usulandanaperperiode'); ?>">
-                <span class="dot"></span>
-                <span class="title">Usulan dana per periode</span>
-              </a>
-            </li>
-            <li class="menu-item <?= $title == 'Realisasi' ? 'active' : '' ?>">
-              <a class="menu-link" href="<?= site_url('staff/RekapData/realisasi'); ?>">
-                <span class="dot"></span>
-                <span class="title">Realisasi</span>
-              </a>
-            </li>
-          </ul>
-        </li> -->
 
             </ul>
         </nav>
@@ -131,7 +98,8 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex">
                             <div class="justify-content-center align-content-center pr-2">
-                                <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
+                                <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>"
+                                    alt="...">
                             </div>
                             <div class="d-flex flex-column align-self-center" style="overflow: hidden;">
                                 <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
@@ -148,16 +116,19 @@
                         <div class="p-2">
                             <div class="d-flex">
                                 <div class="justify-content-center align-content-center pr-2">
-                                    <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
+                                    <img class="avatar-custom"
+                                        src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
                                 </div>
                                 <div class="w-full d-flex flex-column align-self-center">
                                     <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
-                                    <span class="fs-6 color-dark"><span class="fw-500">Super Admin</span> BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
+                                    <span class="fs-6 color-dark"><span class="fw-500">Super Admin</span> BSI Unit
+                                        <?php echo $this->session->userdata('unit_bsi'); ?></sp>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a class="dropdown-item" href="<?= site_url('/guest/login/logout') ?>"><i class="ti-power-off"></i> Logout</a>
+                    <a class="dropdown-item" href="<?= site_url('/guest/login/logout') ?>"><i
+                            class="ti-power-off"></i> Logout</a>
                 </div>
             </div>
 
@@ -169,7 +140,7 @@
     <header class="topbar" id="topbar">
         <div class="topbar-left">
             <span class="topbar-btn sidebar-toggler"><i>&#9776;</i></span>
-            <h2 h2 class="fw-700 topbar-title"><?= $title; ?></h2>
+            <h2 h2 class="fw-700 topbar-title"><?= $title ?></h2>
         </div>
         <div class="topbar-right">
             <span class="topbar-btn has-new"><i class="bi bi-bell"></i></span>
@@ -181,7 +152,7 @@
     <main class="main-container">
         <div class="main-content">
             <div class="row">
-                <?= $template['body']; ?>
+                <?= $template['body'] ?>
             </div>
         </div>
 
@@ -208,7 +179,8 @@
     <script src="<?= asset_path('/js/script.js', '_theme_') ?>"></script>
     <script src="<?= asset_path('/js/custom.js', '_theme_') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js">
+    </script>
 
 
 
