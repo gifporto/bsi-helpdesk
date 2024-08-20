@@ -113,8 +113,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-round btn-custom">Kirim Pesan</button>
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
                     </div>
                 </form>
             </div>
