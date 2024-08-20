@@ -47,32 +47,33 @@
           </a>
         </li>
 
-        <li class="menu-item open <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?><?= $page_active == 'pelayanan_acc' ? 'active' : '' ?>">
+        <li class="menu-item open <?= $page_active == 'pelayanan' ? 'active open' : '' ?>">
           <a class="menu-link menu-color">
             <i class="bi bi-inboxes-fill"></i>
             <span class="title">Pelayanan</span>
+            <span class="arrow"></span>
           </a>
 
           <ul class="menu-submenu">
-            <li class="menu-item <?= $page_active == 'pelayanan_pending' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Pending' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('staff/pelayanan/index_pending'); ?>">
                 <span class="dot"></span>
                 <span class="title">Pending</span>
               </a>
             </li>
-            <li class="menu-item <?= $page_active == 'pelayanan_respon' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Respon' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('staff/pelayanan/index_respon'); ?>">
                 <span class="dot"></span>
                 <span class="title">Respon</span>
               </a>
             </li>
-            <li class="menu-item <?= $page_active == 'pelayanan_proses' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Proses' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('staff/pelayanan/index_proses'); ?>">
                 <span class="dot"></span>
                 <span class="title">Proses</span>
               </a>
             </li>
-            <li class="menu-item <?= $page_active == 'pelayanan_selesai' ? 'active' : '' ?>">
+            <li class="menu-item <?= $title == 'Pelayanan Buku Tamu Selesai' ? 'active' : '' ?>">
               <a class="menu-link" href="<?= site_url('staff/pelayanan/index_selesai'); ?>">
                 <span class="dot"></span>
                 <span class="title">Selesai</span>
