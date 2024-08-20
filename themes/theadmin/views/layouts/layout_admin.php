@@ -81,13 +81,15 @@
 
       <div class="dropdown">
         <div class="card-custom p-2" data-toggle="dropdown">
-          <div class="d-flex">
-            <div class="justify-content-center align-content-center pr-2">
-              <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
-            </div>
-            <div class="d-flex flex-column align-self-center" style="overflow: hidden;">
-              <span class="fs-7 fw-700 color-dark">Nama Lengkap Pengguna</span>
-              <span class="fs-6 color-dark">Biro Sistem Informasi</sp>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="justify-content-center align-content-center pr-2">
+                <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
+              </div>
+              <div class="d-flex flex-column align-self-center" style="overflow: hidden;">
+                <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
+                <span class="fs-6 color-dark">BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
+              </div>
             </div>
             <div class="justify-content-center align-content-center m-2">
               <span class="ti-angle-down dropdown-icon"></span>
@@ -102,8 +104,8 @@
                   <img class="avatar-custom" src="<?= asset_path('/img/avatar/avatar.jpg', '_theme_') ?>" alt="...">
                 </div>
                 <div class="w-full d-flex flex-column align-self-center">
-                  <span class="fs-7 fw-700 color-dark">Nama Lengkap Pengguna</span>
-                  <span class="fs-6 color-dark">Biro Sistem Informasi</sp>
+                  <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
+                  <span class="fs-6 color-dark">BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
                 </div>
               </div>
             </div>

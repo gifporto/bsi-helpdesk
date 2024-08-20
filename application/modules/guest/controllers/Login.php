@@ -36,9 +36,11 @@ class Login extends APP_Controller
             // Set sesi pengguna
             $this->session->set_userdata([
                 'user_id' => $user->id,
+                'name' => $user->name,
                 'email' => $user->email,
                 'role_id' => $user->role_id,
-                'logged_in' => true
+                'unit_bsi' => $user->unit_bsi,
+                'logged_in' => true,
             ]);
 
             // Redirect ke halaman sesuai dengan peran pengguna
