@@ -96,7 +96,7 @@
               </div>
               <div class="d-flex flex-column align-self-center" style="overflow: hidden;">
                 <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
-                <span class="fs-6 color-dark">BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
+                <span class="fs-6 color-dark"><span class="fw-500">Staff</span> BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?> </sp>
               </div>
             </div>
             <div class="justify-content-center align-content-center m-2">

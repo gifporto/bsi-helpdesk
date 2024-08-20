@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="w-full d-flex flex-column align-self-center">
                                     <span class="fs-7 fw-700 color-dark"><?php echo $this->session->userdata('name'); ?></span>
-                                    <span class="fs-6 color-dark">BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
+                                    <span class="fs-6 color-dark"><span class="fw-500">Super Admin</span>BSI Unit <?php echo $this->session->userdata('unit_bsi'); ?></sp>
                                 </div>
                             </div>
                         </div>
