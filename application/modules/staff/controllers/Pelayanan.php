@@ -21,6 +21,8 @@ class Pelayanan extends APP_Controller
         $this->load->helper('nohp');
         $this->load->helper('text');
         $this->load->library('user_agent');
+        $this->load->helper('fonnte_helper');
+
 
         if (!$this->session->userdata('logged_in')) {
             redirect('guest/dashboard/login');
@@ -136,4 +138,20 @@ class Pelayanan extends APP_Controller
         $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
+
+    public function send_wa()
+    {
+        $target = $this->input->post('telp');
+        $message = $this->input->post('pesan');
+        $token = 'NBnFwCY+zX58mvYh-RtN';
+
+        $response = send_message($target, $message, $token);
+
+        if ($response['status'] == 'success') {
+            echo $response['response'];
+        } else {
+            echo 'Error: ' . $response['message'];
+        }
+    }
+
 }
