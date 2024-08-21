@@ -70,8 +70,8 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <button class="btn btn-round btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
-                                <button class="mx-2 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="btn btn-round btn-success btn-square text-center mx-2" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <button class="btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                                 <!-- btn-round -->
                             </td>
