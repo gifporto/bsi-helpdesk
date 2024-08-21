@@ -93,7 +93,7 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Pending',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests('Pending')
+            'guests' => $this->M_guest->get_guests_by_status('Pending')
         ];
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
@@ -103,7 +103,7 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Respon',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests('Respon')
+            'guests' => $this->M_guest->get_guests_by_status('Respon')
         ];
         $this->template->build($this->module . '/pelayanan/v_respon', $data);
     }
@@ -113,7 +113,7 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Proses',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests('Proses')
+            'guests' => $this->M_guest->get_guests_by_status('Proses')
         ];
         $this->template->build($this->module . '/pelayanan/v_proses', $data);
     }
@@ -123,7 +123,7 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Selesai',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests('Selesai')
+            'guests' => $this->M_guest->get_guests_by_status('Selesai')
         ];
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }

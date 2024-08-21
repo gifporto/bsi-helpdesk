@@ -4,3 +4,15 @@ super admin bisa approve
 pending jadi respon
  semua input masuk ke bu uut - approve
 tambah field keterangan di guest
+
+
+21 Agustus 2024 :
+bu uut & super admin:
+bisa ubah jenis_keperluan
+
+Sorting berdasarkan Unit dan waktu masuk  dan tanggal
+
+Unit dinamis
+
+tambah notifikasi
+
