@@ -44,11 +44,9 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
                         <label class="text-dark require">Unit BSI</label>
                         <select class="form-control" id="unit_bsi" name="unit_bsi" required>
                             <option value="">Pilih Unit BSI</option>
-                            <option value="1">BSI 1</option>
-                            <option value="2">BSI 2</option>
-                            <option value="3">BSI 3</option>
-                            <option value="4">BSI 4</option>
-                            <option value="5">BSI 5</option>
+                            <?php foreach ($units as $unit) : ?>
+                            <option value="BSI <?= $unit->id ?>"><?= $unit->name ?></option>
+                            <?php endforeach ?>
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>

@@ -8,12 +8,11 @@ class Dashboard extends APP_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->template->set_layout('layout_guest')
-            ->set_partial('modules_js', 'modules_js')
-            ->set_partial('modules_css', 'modules_css');
+        $this->template->set_layout('layout_guest')->set_partial('modules_js', 'modules_js')->set_partial('modules_css', 'modules_css');
         $this->asset->set_theme($this->config->item('theme'));
 
         $this->load->model('M_guest');
+        $this->load->model('M_unit');
         $this->load->helper(['nohp', 'text']);
         $this->load->library('user_agent');
     }
@@ -21,12 +20,13 @@ class Dashboard extends APP_Controller
     public function index()
     {
         $data['page_active'] = 'dashboard';
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build('guest/v_dashboard', $data);
     }
 
     public function store()
     {
-        $data = array(
+        $data = [
             'nama' => $this->input->post('nama'),
             'telp' => $this->input->post('telp'),
             'unit_bsi' => $this->input->post('unit_bsi'),
@@ -34,7 +34,7 @@ class Dashboard extends APP_Controller
             'keperluan' => $this->input->post('keperluan'),
             'status' => 'Pending',
             'created_at' => date('Y-m-d H:i:s'),
-        );
+        ];
 
         $kategori = $this->input->post('kategori');
         if ($kategori === 'Internal') {
