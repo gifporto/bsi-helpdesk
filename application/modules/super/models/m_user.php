@@ -35,14 +35,13 @@ class m_user extends CI_Model
         return $this->db->delete('users');
     }
 
-
-
-
-    public function get_users_with_roles()
+    public function get_users_with_units()
     {
-        $this->db->select('users.*, roles.role_name');
+        // Memastikan nama kolom dalam query
+        $this->db->select('users.*, roles.role_name, units.name as unit_name');
         $this->db->from('users');
-        $this->db->join('roles', 'roles.id = users.role_id'); // Sesuaikan dengan kolom yang sesuai di database Anda
+        $this->db->join('roles', 'roles.id = users.role_id', 'left');
+        $this->db->join('units', 'units.id = users.unit_id', 'left');
         $query = $this->db->get();
         return $query->result();
     }

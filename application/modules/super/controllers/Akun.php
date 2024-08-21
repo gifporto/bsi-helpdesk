@@ -16,6 +16,7 @@ class Akun extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('m_user');
         $this->load->model('m_role');
+        $this->load->model('M_unit');
 
         if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
             redirect('guest/dashboard/login');
@@ -26,7 +27,9 @@ class Akun extends CI_Controller
     {
         $data['title'] = 'Kelola Akun';
         $data['page_active'] = 'akun';
-        $data['users'] = $this->m_user->get_users_with_roles();
+        $data['users'] = $this->m_user->get_users_with_units();
+        $data['units'] = $this->M_unit->get_units();
+
         $this->template->build($this->module . '/akun/index', $data);
     }
 
@@ -45,12 +48,9 @@ class Akun extends CI_Controller
                 'name' => $this->input->post('name'),
                 'email' => $this->input->post('email'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
-                'role_id' => $this->input->post('role_id')
+                'role_id' => $this->input->post('role_id'),
+                'unit_id' => $this->input->post('unit_id') ? $this->input->post('unit_id') : null
             );
-
-            if ($this->input->post('role_id') == 2 || $this->input->post('role_id') == 3) { // 2 = Admin Role ID
-                $data['unit_bsi'] = $this->input->post('unit_bsi');
-            }
 
             $this->m_user->create_user($data);
 
@@ -59,7 +59,6 @@ class Akun extends CI_Controller
             redirect('super/akun/index');
         }
     }
-
 
     public function update()
     {
@@ -75,17 +74,12 @@ class Akun extends CI_Controller
             $data = array(
                 'name' => $this->input->post('name'),
                 'email' => $this->input->post('email'),
-                'role_id' => $this->input->post('role_id')
+                'role_id' => $this->input->post('role_id'),
+                'unit_id' => $this->input->post('unit_id') ? $this->input->post('unit_id') : null
             );
 
             if ($this->input->post('password')) {
                 $data['password'] = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
-            }
-
-            if ($this->input->post('role_id') == 2) { // 2 = Admin Role ID
-                $data['unit_bsi'] = $this->input->post('unit_bsi');
-            } else {
-                $data['unit_bsi'] = null;
             }
 
             $this->m_user->update_user($id, $data);

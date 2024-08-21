@@ -12,4 +12,13 @@ class m_role extends CI_Model
     {
         return $this->db->get('roles')->result();
     }
+
+    public function get_unit_name($unit_id)
+    {
+        $this->db->select('name');
+        $this->db->from('units');
+        $this->db->where('id', $unit_id);
+        $query = $this->db->get();
+        return $query->row()->name;
+    }
 }
