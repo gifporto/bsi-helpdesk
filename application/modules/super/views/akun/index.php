@@ -12,7 +12,7 @@
                 </div>
                 <?php foreach ($users as $user): ?>
                     <div class="media media-single">
-                        <div class="media-body" onclick="window.location.href='<?= site_url('pt/Prodi/detailprodi'); ?>'">
+                        <div class="media-body">
                             <h6 class="fw-700"><?= $user->name; ?>
                                 <?php if ($user->role_name !== 'Super Admin'): ?>
                                     - Unit BSI <?= $user->unit_bsi; ?>
