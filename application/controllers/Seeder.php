@@ -13,7 +13,7 @@ class Seeder extends CI_Controller
         $faker = Faker\Factory::create();
 
         // Jumlah data dummy yang ingin di-generate
-        $jumlah_data = 100;
+        $jumlah_data = 30;
 
         for ($i = 0; $i < $jumlah_data; $i++) {
             $data = [

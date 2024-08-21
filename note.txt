@@ -1,8 +1,8 @@
 http://localhost/bsi-helpdesk/index.php/seeder/index
 
-super admin bisa approve
+OK - super admin bisa approve
 pending jadi respon
- semua input masuk ke bu uut - approve
+OK - semua input masuk ke bu uut - approve
 tambah field keterangan di guest
 
 
@@ -10,9 +10,9 @@ tambah field keterangan di guest
 bu uut & super admin:
 bisa ubah jenis_keperluan
 
-Sorting berdasarkan Unit dan waktu masuk  dan tanggal
+OK - Sorting berdasarkan Unit dan waktu masuk  dan tanggal
 
-Unit dinamis
+OK - Unit dinamis
 
 tambah notifikasi
 
