@@ -70,9 +70,30 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <button class="mx-1 btn btn-round btn-primary btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Proses')" title="Proses"><i class="fa fa-hourglass-1"></i></button>
+                                <form action="<?php echo site_url('staff/pelayanan/update_status'); ?>" method="post">
+                                    <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                    <input type="hidden" name="status" value="Proses">
+                                    <input type="hidden" name="redirect_to" value="staff/pelayanan/index_respon">
+                                    <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                    <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
+
+                                    <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
+                                        <i class="fa fa-hourglass-1"></i>
+                                    </button>
+                                </form>
+
+                                <form action="<?php echo site_url('staff/pelayanan/update_status'); ?>" method="post">
+                                    <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                    <input type="hidden" name="status" value="Selesai">
+                                    <input type="hidden" name="redirect_to" value="staff/pelayanan/index_respon">
+                                    <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                    <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
+
+                                    <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </form>
                                 <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
-                                <button class="mr-1 btn btn-round btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <button class="ml-1 btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                                 <!-- btn-round -->
                             </td>

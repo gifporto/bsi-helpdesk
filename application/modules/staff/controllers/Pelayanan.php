@@ -46,10 +46,20 @@ class Pelayanan extends APP_Controller
         $id = $this->input->post('id');
         $status = $this->input->post('status');
 
-        $data = array('status' => $status);
-        $this->M_guest->update_guests($id, $data);
+        $target = $this->input->post('telp');
+        $message = $this->input->post('pesan');
+        $token = 'NBnFwCY+zX58mvYh-RtN';
+        $redirect_to = $this->input->post('redirect_to') ?? 'staff/pelayanan/index_pending'; // Default redirect
 
-        echo json_encode(['success' => true]);
+        $response = send_message($target, $message, $token);
+
+        if ($id && $status) {
+            $data = ['status' => $status];
+            $this->M_guest->update_guests($id, $data);
+            redirect($redirect_to);
+        } else {
+            redirect($redirect_to);
+        }
     }
 
     public function destroy()
