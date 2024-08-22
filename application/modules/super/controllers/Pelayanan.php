@@ -14,6 +14,7 @@ class Pelayanan extends CI_Controller
         $this->load->model('M_guest');
         $this->load->helper(['url', 'download', 'text']);
         $this->load->library(['user_agent', 'template', 'asset']);
+        $this->load->helper('fonnte_helper');
 
         $this->template->set_layout('layout_super')
             ->set_partial('modules_js', 'modules_js')
@@ -30,12 +31,19 @@ class Pelayanan extends CI_Controller
         $id = $this->input->post('id');
         $status = $this->input->post('status');
 
+        $target = $this->input->post('telp');
+        $message = $this->input->post('pesan');
+        $token = 'NBnFwCY+zX58mvYh-RtN';
+        $redirect_to = $this->input->post('redirect_to') ?? 'staff/pelayanan/index_pending'; // Default redirect
+
+        $response = send_message($target, $message, $token);
+
         if ($id && $status) {
             $data = ['status' => $status];
             $this->M_guest->update_guests($id, $data);
-            echo json_encode(['success' => true]);
+            redirect($redirect_to);
         } else {
-            echo json_encode(['success' => false, 'message' => 'Invalid input.']);
+            redirect($redirect_to);
         }
     }
 
