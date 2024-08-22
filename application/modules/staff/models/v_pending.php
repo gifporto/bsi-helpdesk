@@ -1,3 +1,5 @@
+<!-- <?php phpinfo(); ?> -->
+
 <!-- table -->
 <div class="col-lg-12">
     <div class="card shadow-2">
@@ -24,17 +26,18 @@
                     </div>
                     <button id="filterBtn" class="btn btn-round btn-custom">Filter</button>
                 </div>
+
                 <div class="ml-2">
-                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export') ?>">Cetak<i
+                    <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export'); ?>">Cetak<i
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
+
             <table id="guestsTable" class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
                 data-scroll-collapse="true" cellspacing="0">
                 <thead class="bg-color-primary1">
                     <tr>
                         <th class="font-weight-bold">Tanggal</th>
-                        <th class="font-weight-bold">Jam</th>
                         <th class="font-weight-bold">Nama</th>
                         <th class="font-weight-bold">Instansi</th>
                         <th class="font-weight-bold">Unit BSI</th>
@@ -46,18 +49,13 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                        <tr data-unit="<?= $guest['unit_bsi'] ?>" data-jenis="<?= $guest['jenis_keperluan'] ?>">
-                            <?php
-                            $date = new DateTime($guest['created_at']);
-                            $formatted_date = $date->format('d F Y');
-                            $formatted_time = $date->format('H:i');
-                            $iso_date = $date->format(DateTime::ATOM);
-                            ?>
+                        <tr>
                             <td>
+                                <?php
+                                $date = new DateTime($guest['created_at']);
+                                $formatted_date = $date->format('d F Y H:i');
+                                ?>
                                 <?= $formatted_date ?>
-                            </td>
-                            <td>
-                                <?= $formatted_time ?>
                             </td>
                             <td><?= $guest['nama'] ?></td>
                             <td><?= $guest['instansi'] ?></td>
@@ -66,26 +64,41 @@
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
-                                    <button
-                                        class="btn btn-flat btn-sm btn-bold btn-round btn-info"><?= $guest['status'] ?></button>
+                                    <button class="btn btn-flat btn-sm btn-bold btn-round btn-secondary"><?= $guest['status'] ?></button>
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
-                                    <input type="hidden" name="id" value="<?= $guest['id'] ?>">
-                                    <input type="hidden" name="status" value="Proses">
-                                    <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
-                                    <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
-                                    <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
+                                <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
 
-                                    <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
-                                        <i class="fa fa-hourglass-1"></i>
-                                    </button>
-                                </form>
-                                <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
+                                    <form action="<?php echo site_url('staff/pelayanan/update_status'); ?>" method="post">
+                                        <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                        <input type="hidden" name="status" value="Respon">
+                                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_pending">
+                                        <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                        <input type="hidden" name="pesan" value="Pelayanan anda sudah direspon! ^_^">
+
+                                        <button class="mr-1 btn btn-round btn-info btn-square text-center" title="Respon">
+                                            <i class="bi bi-hand-thumbs-up"></i>
+                                        </button>
+                                    </form>
+
+                                    <form action="<?php echo site_url('staff/pelayanan/update_status'); ?>" method="post">
+                                        <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                        <input type="hidden" name="status" value="Proses">
+                                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_pending">
+                                        <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                        <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
+
+                                        <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
+                                            <i class="fa fa-hourglass-1"></i>
+                                        </button>
+                                    </form>
+                                <?php } ?>
+
+                                <form action="<?php echo site_url('staff/pelayanan/update_status'); ?>" method="post">
                                     <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                                     <input type="hidden" name="status" value="Selesai">
-                                    <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
+                                    <input type="hidden" name="redirect_to" value="staff/pelayanan/index_pending">
                                     <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                     <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
 
@@ -93,12 +106,17 @@
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </form>
-                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal"
-                                    data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i
-                                        class="fa fa-commenting-o"></i></button>
-                                <button class="ml-1 btn btn-round btn-danger btn-square text-center"
-                                    onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i
-                                        class="fa fa-close"></i></button>
+
+                                <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
+                                    <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal"
+                                        data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan">
+                                        <i class="fa fa-commenting-o"></i>
+                                    </button>
+
+                                <?php } ?>
+
+                                <button class="ml-1 btn btn-round  btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
+                                <!-- btn-round -->
                             </td>
                         </tr>
                     <?php } ?>
@@ -109,8 +127,7 @@
 </div>
 
 <?php foreach ($guests as $guest) : ?>
-    <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"
-        aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -119,13 +136,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo site_url('super/pelayanan/send_wa'); ?>" method="post">
+                <form action="<?php echo site_url('staff/pelayanan/send_wa'); ?>" method="post">
                     <div class="modal-body">
-                        <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
+                        <input type="hidden" name="redirect_to" value="staff/pelayanan/index_pending">
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>"
-                                readonly>
+                            <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="telp">Telp</label>
@@ -137,8 +153,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary btn-round"
-                            data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-sm btn-secondary btn-round" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
                     </div>
                 </form>
@@ -146,7 +161,6 @@
         </div>
     </div>
 <?php endforeach; ?>
-
 
 <script>
     $(document).ready(function() {
@@ -176,7 +190,7 @@
 
     function updateStatus(id, status) {
         $.ajax({
-            url: '<?= site_url('super/Pelayanan/update_status') ?>',
+            url: '<?= site_url('staff/Pelayanan/update_status') ?>',
             type: 'POST',
             data: {
                 id: id,
@@ -194,7 +208,7 @@
     function destroy(id) {
         if (confirm('Apakah Anda yakin ingin menghapus tamu ini?')) {
             $.ajax({
-                url: '<?= site_url('super/Pelayanan/destroy') ?>',
+                url: '<?= site_url('staff/Pelayanan/destroy') ?>',
                 type: 'POST',
                 data: {
                     id: id,

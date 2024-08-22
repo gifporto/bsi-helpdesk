@@ -34,6 +34,7 @@ class M_guest extends CI_Model
     {
         $this->db->where_in('jenis_keperluan', ['teknis', 'aduan']);
         $this->db->where('status', $status);
+        $this->db->order_by('created_at', 'DESC'); 
         return $this->db->get('guests')->result_array();
     }
 }

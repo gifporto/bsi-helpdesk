@@ -12,6 +12,7 @@ class Pelayanan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_guest');
+        $this->load->model('M_unit');
         $this->load->helper(['url', 'download', 'text']);
         $this->load->library(['user_agent', 'template', 'asset']);
         $this->load->helper('fonnte_helper');
@@ -101,7 +102,8 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Pending',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests_by_status('Pending')
+            'guests' => $this->M_guest->get_guests_by_status('Pending'),
+            'units' => $this->M_unit->get_units()
         ];
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
@@ -111,7 +113,8 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Respon',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests_by_status('Respon')
+            'guests' => $this->M_guest->get_guests_by_status('Respon'),
+            'units' => $this->M_unit->get_units()
         ];
         $this->template->build($this->module . '/pelayanan/v_respon', $data);
     }
@@ -121,7 +124,8 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Proses',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests_by_status('Proses')
+            'guests' => $this->M_guest->get_guests_by_status('Proses'),
+            'units' => $this->M_unit->get_units()
         ];
         $this->template->build($this->module . '/pelayanan/v_proses', $data);
     }
@@ -131,7 +135,8 @@ class Pelayanan extends CI_Controller
         $data = [
             'title' => 'Pelayanan Buku Tamu Selesai',
             'page_active' => 'pelayanan',
-            'guests' => $this->M_guest->get_guests_by_status('Selesai')
+            'guests' => $this->M_guest->get_guests_by_status('Selesai'),
+            'units' => $this->M_unit->get_units()
         ];
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }

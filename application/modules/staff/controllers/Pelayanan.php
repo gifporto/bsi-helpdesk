@@ -18,6 +18,7 @@ class Pelayanan extends APP_Controller
         $this->asset->set_theme($this->config->item('theme'));
 
         $this->load->model('M_guest');
+        $this->load->model('M_unit');
         $this->load->helper('nohp');
         $this->load->helper('text');
         $this->load->library('user_agent');
@@ -119,7 +120,9 @@ class Pelayanan extends APP_Controller
     {
         $data['title'] = 'Pelayanan Buku Tamu Pending';
         $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Pending'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $data['guests'] = $this->M_guest->get_guests_by_status('Pending');
+        $data['units'] = $this->M_unit->get_units();
+        
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
@@ -127,7 +130,8 @@ class Pelayanan extends APP_Controller
     {
         $data['title'] = 'Pelayanan Buku Tamu Respon';
         $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Respon'); // Ambil data dengan keperluan == teknis atau aduan dan status pending
+        $data['guests'] = $this->M_guest->get_guests_by_status('Respon');
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build($this->module . '/pelayanan/v_respon', $data);
     }
 
@@ -136,6 +140,7 @@ class Pelayanan extends APP_Controller
         $data['title'] = 'Pelayanan Buku Tamu Proses';
         $data['page_active'] = 'pelayanan';
         $data['guests'] = $this->M_guest->get_guests_by_status('Proses');
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build($this->module . '/pelayanan/v_proses', $data);
     }
 
@@ -144,6 +149,7 @@ class Pelayanan extends APP_Controller
         $data['title'] = 'Pelayanan Buku Tamu Selesai';
         $data['page_active'] = 'pelayanan';
         $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
 

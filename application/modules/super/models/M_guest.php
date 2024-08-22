@@ -32,6 +32,7 @@ class M_guest extends CI_Model
     public function get_guests_by_status($status)
     {
         $this->db->where('status', $status);
+        $this->db->order_by('created_at', 'DESC'); // Urutkan berdasarkan tanggal terbaru
         return $this->db->get('guests')->result_array();
     }
 }

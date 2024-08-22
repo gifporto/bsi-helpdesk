@@ -5,28 +5,32 @@
     <div class="card shadow-2">
         <div class="card-body">
             <div class="flexbox mb-20">
-                <div class="mb-2 d-flex justify-content-between">
-                    <div class="btn-toolbar d-flex flex-wrap align-items-center">
-                        <div class="btn-group btn-group-sm m-1">
-                            <input type="date" class="btn form-control">
-                        </div>
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Asal</button>
-                            <div class="dropdown-menu dropdown-menu-left">
-                                <input type="text" class="form-control mb-2" placeholder="Cari opsi...">
-                                <a class="dropdown-item" href="#">Asal Surat 1</a>
-                                <a class="dropdown-item" href="#">Asal Surat 2</a>
-                                <a class="dropdown-item" href="#">Asal Surat 3</a>
-                            </div>
-                        </div>
+                <div class="mb-2 d-flex justify-content-start">
+                    <div class="form-group mr-1">
+                        <select id="unitFilter" data-provide="selectpicker" data-lang="en_US" title="Unit" class="form-control">
+                            <option value="">Semua</option>
+                            <?php foreach ($units as $unit) : ?>
+                                <option value="<?= $unit['name'] ?>"><?= $unit['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
+                    <div class="form-group mr-1">
+                        <select id="jenisKeperluanFilter" data-provide="selectpicker" data-lang="en_US" title="Jenis Keperluan" class="form-control">
+                            <option value="">Semua</option>
+                            <option value="Teknis">Teknis</option>
+                            <option value="Aduan">Aduan</option>
+                            <option value="Tamu">Tamu</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <button id="filterBtn" class="btn btn-round btn-custom">Filter</button>
                 </div>
                 <div class="ml-2">
                     <a class="btn btn-sm btn-round btn-custom" href="<?= site_url('admin/Pelayanan/export') ?>">Cetak<i
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
-            <table class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
+            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm"
                 data-scroll-collapse="true" cellspacing="0">
                 <thead class="bg-color-primary1">
                     <tr>
@@ -43,19 +47,14 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                        <tr>
+                        <tr data-unit="<?= $guest['unit_bsi'] ?>" data-jenis="<?= $guest['jenis_keperluan'] ?>">
                             <?php
                             $date = new DateTime($guest['created_at']);
-                            $formatted_date = $date->format('Y F d');
+                            $formatted_date = $date->format('d F Y');
                             $formatted_time = $date->format('H:i');
-                            $iso_date = $date->format(DateTime::ATOM);
                             ?>
-                            <td>
-                                <?= $formatted_date ?>
-                            </td>
-                            <td>
-                                <?= $formatted_time ?>
-                            </td>
+                            <td><?= $formatted_date ?></td>
+                            <td><?= $formatted_time ?></td>
                             <td><?= $guest['nama'] ?></td>
                             <td><?= $guest['instansi'] ?></td>
                             <td><?= $guest['unit_bsi'] ?></td>
@@ -68,60 +67,49 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-
-
+                                <!-- Aksi buttons -->
                                 <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
-
                                     <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
                                         <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                                         <input type="hidden" name="status" value="Respon">
                                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sudah direspon! ^_^">
-
                                         <button class="mr-1 btn btn-round btn-info btn-square text-center" title="Respon">
                                             <i class="bi bi-hand-thumbs-up"></i>
                                         </button>
                                     </form>
-
                                     <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
                                         <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                                         <input type="hidden" name="status" value="Proses">
                                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
-
                                         <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
                                             <i class="fa fa-hourglass-1"></i>
                                         </button>
                                     </form>
                                 <?php } ?>
-
                                 <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
                                     <input type="hidden" name="id" value="<?= $guest['id'] ?>">
                                     <input type="hidden" name="status" value="Selesai">
                                     <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                     <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                     <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
-
                                     <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </form>
-
                                 <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
                                     <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal"
                                         data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan">
                                         <i class="fa fa-commenting-o"></i>
                                     </button>
-
                                 <?php } ?>
-
                                 <button class="ml-1 btn btn-round btn-danger btn-square text-center"
                                     onclick="destroy(<?= $guest['id'] ?>)" title="Hapus">
                                     <i class="fa fa-close"></i>
                                 </button>
-
                             </td>
                         </tr>
                     <?php } ?>
@@ -130,6 +118,8 @@
         </div>
     </div>
 </div>
+
+
 
 <?php foreach ($guests as $guest) : ?>
     <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"

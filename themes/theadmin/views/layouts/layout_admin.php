@@ -164,6 +164,28 @@
   <!-- excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
+  <!-- filter  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#filterBtn').click(function() {
+        var selectedUnit = $('#unitFilter').val().toLowerCase();
+        var selectedJenis = $('#jenisKeperluanFilter').val().toLowerCase();
+
+        $('#guestsTable tbody tr').each(function() {
+          var unit = $(this).data('unit').toLowerCase();
+          var jenis = $(this).data('jenis').toLowerCase();
+
+          if ((selectedUnit === '' || unit.includes(selectedUnit)) && (selectedJenis === '' || jenis.includes(selectedJenis))) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 
 </html>

@@ -1,18 +1,22 @@
 http://localhost/bsi-helpdesk/index.php/seeder/index
 
 OK - super admin bisa approve
-pending jadi respon
+OK - tambah respon
 OK - semua input masuk ke bu uut - approve
-tambah field keterangan di guest
+OK - tambah field keterangan di guest
 
 
 21 Agustus 2024 :
 bu uut & super admin:
 bisa ubah jenis_keperluan
 
-OK - Sorting berdasarkan Unit dan waktu masuk  dan tanggal
+OK - Sorting berdasarkan waktu masuk
+
+Fitur filter unit dan jenis_keperluan
 
 OK - Unit dinamis
 
 tambah notifikasi
 
+hide keperuan ketika buku tamu
+tambah lainya
