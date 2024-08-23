@@ -12,7 +12,7 @@ bisa ubah jenis_keperluan
 
 OK - Sorting berdasarkan waktu masuk
 
-Fitur filter unit dan jenis_keperluan
+OK - Fitur filter unit dan jenis_keperluan
 
 OK - Unit dinamis
 

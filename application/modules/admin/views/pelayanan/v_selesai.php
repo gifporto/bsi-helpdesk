@@ -4,29 +4,25 @@
         <div class="card-body">
 
             <div class="flexbox mb-20">
-                <div class="mb-2 d-flex justify-content-between">
-                    <div class="btn-toolbar d-flex flex-wrap align-items-center">
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Status</button>
-                            <div class="dropdown-menu dropdown-menu-left">
-                                <a class="dropdown-item" href="#">Pending</a>
-                                <a class="dropdown-item" href="#">Proses</a>
-                                <a class="dropdown-item" href="#">Selesai</a>
-                            </div>
-                        </div>
-                        <div class="btn-group btn-group-sm m-1">
-                            <input type="date" class="btn form-control">
-                        </div>
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn dropdown-toggle m-1" data-toggle="dropdown">Asal</button>
-                            <div class="dropdown-menu dropdown-menu-left">
-                                <input type="text" class="form-control mb-2" placeholder="Cari opsi...">
-                                <a class="dropdown-item" href="#">Asal Surat 1</a>
-                                <a class="dropdown-item" href="#">Asal Surat 2</a>
-                                <a class="dropdown-item" href="#">Asal Surat 3</a>
-                            </div>
-                        </div>
+                <div class="mb-2 d-flex justify-content-start">
+                    <div class="form-group mr-1">
+                        <select id="unitFilter" data-provide="selectpicker" data-lang="en_US" title="Unit" class="form-control">
+                            <option value="">Semua</option>
+                            <?php foreach ($units as $unit) : ?>
+                                <option value="<?= $unit['name'] ?>"><?= $unit['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
+                    <div class="form-group mr-1">
+                        <select id="jenisKeperluanFilter" data-provide="selectpicker" data-lang="en_US" title="Jenis Keperluan" class="form-control">
+                            <option value="">Semua</option>
+                            <option value="Teknis">Teknis</option>
+                            <option value="Aduan">Aduan</option>
+                            <option value="Tamu">Tamu</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <button id="filterBtn" class="btn btn-round btn-custom">Filter</button>
                 </div>
 
                 <div class="ml-2">
@@ -35,7 +31,7 @@
                 </div>
             </div>
 
-            <table id="table1" class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
+            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
                 data-scroll-collapse="true" cellspacing="0">
                 <thead class="bg-color-primary1">
                     <tr>
@@ -50,7 +46,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                        <tr>
+                        <tr data-unit="<?= $guest['unit_bsi'] ?>" data-jenis="<?= $guest['jenis_keperluan'] ?>">
                             <td>
                                 <?php
                                 $date = new DateTime($guest['created_at']);

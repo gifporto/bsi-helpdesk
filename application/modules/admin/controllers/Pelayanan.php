@@ -18,6 +18,7 @@ class Pelayanan extends APP_Controller
         $this->asset->set_theme($this->config->item('theme'));
 
         $this->load->model('M_guest');
+        $this->load->model('M_unit');
         $this->load->helper('nohp');
         $this->load->helper('text');
         $this->load->library('user_agent');
@@ -109,7 +110,8 @@ class Pelayanan extends APP_Controller
     {
         $data['title'] = 'Pelayanan Buku Tamu Pending';
         $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_all_guests_by_status('Pending'); // Ambil data dengan status 'Pending'
+        $data['guests'] = $this->M_guest->get_all_guests_by_status('Pending');
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
@@ -117,7 +119,8 @@ class Pelayanan extends APP_Controller
     {
         $data['title'] = 'Pelayanan Buku Tamu Selesai';
         $data['page_active'] = 'pelayanan';
-        $data['guests'] = $this->M_guest->get_guests_by_status('Selesai'); // Ambil data dengan status 'ACC'
+        $data['guests'] = $this->M_guest->get_guests_by_status('Selesai');
+        $data['units'] = $this->M_unit->get_units();
         $this->template->build($this->module . '/pelayanan/v_selesai', $data);
     }
 }
