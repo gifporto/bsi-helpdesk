@@ -161,4 +161,26 @@ class Pelayanan extends CI_Controller
         // Pastikan redirect_to valid dan aman
         redirect($redirect_to);
     }
+
+    public function update_jenis_keperluan()
+    {
+        $guest_id = $this->input->post('guest_id'); // Mengambil guest_id dari form
+        $jenis_keperluan = $this->input->post('jenis_keperluan');
+        $redirect_to = $this->input->post('redirect_to') ?? 'super/pelayanan/index_pending'; // Default redirect
+
+        if ($guest_id && $jenis_keperluan) {
+            $data = [
+                'jenis_keperluan' => $jenis_keperluan
+            ];
+            $this->M_guest->update_guests($guest_id, $data); // Menggunakan guest_id untuk update
+            $this->session->set_flashdata('notification', 'Jenis keperluan berhasil diperbarui!');
+            $this->session->set_flashdata('alert_type', 'success');
+        } else {
+            $this->session->set_flashdata('notification', 'Gagal memperbarui jenis keperluan.');
+            $this->session->set_flashdata('alert_type', 'danger');
+        }
+
+        redirect($redirect_to);
+    }
+
 }

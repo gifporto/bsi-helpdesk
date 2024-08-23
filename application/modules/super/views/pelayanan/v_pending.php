@@ -58,7 +58,11 @@
                             <td><?= $guest['nama'] ?></td>
                             <td><?= $guest['instansi'] ?></td>
                             <td><?= $guest['unit_bsi'] ?></td>
-                            <td><?= $guest['jenis_keperluan'] ?></td>
+                            <td>
+                                <a class="btn btn-flat btn-primary" data-toggle="modal" data-target="#modal_jenis_keperluan_<?= $guest['id'] ?>">
+                                    <?= $guest['jenis_keperluan'] ?>
+                                </a>
+                            </td>
                             <td><?= $guest['keperluan'] ?></td>
                             <td>
                                 <div class="media-right">
@@ -122,6 +126,7 @@
 
 
 <?php foreach ($guests as $guest) : ?>
+
     <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"
         aria-labelledby="modalCreateLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -132,7 +137,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo site_url('super/pelayanan/send_wa'); ?>" method="post">
+                <form action="<?php echo site_url('super/pelayanan/update_jenis_keperluan'); ?>" method="post">
                     <div class="modal-body">
                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                         <div class="form-group">
@@ -153,6 +158,42 @@
                         <button type="button" class="btn btn-sm btn-secondary btn-round"
                             data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_jenis_keperluan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"
+        aria-labelledby="modalCreateLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createUserModalLabel">Ubah Keperluan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo site_url('super/pelayanan/update_jenis_keperluan'); ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
+                        <input type="hidden" name="guest_id" value="<?= $guest['id'] ?>">
+                        <div class="form-group">
+                            <label class="text-dark require">Keperluan</label>
+                            <select class="form-control" id="jenis_keperluan" name="jenis_keperluan" required>
+                                <option value="">Pilih Keperluan</option>
+                                <option value="Teknis" <?= $guest['jenis_keperluan'] == 'Teknis' ? 'selected' : '' ?>>Teknis</option>
+                                <option value="Aduan" <?= $guest['jenis_keperluan'] == 'Aduan' ? 'selected' : '' ?>>Aduan</option>
+                                <option value="Tamu" <?= $guest['jenis_keperluan'] == 'Tamu' ? 'selected' : '' ?>>Tamu</option>
+                                <option value="Lainnya" <?= $guest['jenis_keperluan'] == 'Lainnya' ? 'selected' : '' ?>>Lainnya</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary btn-round"
+                            data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-round btn-custom">Ubah Keperluan</button>
                     </div>
                 </form>
             </div>

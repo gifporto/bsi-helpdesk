@@ -7,8 +7,7 @@ OK - tambah field keterangan di guest
 
 
 21 Agustus 2024 :
-bu uut & super admin:
-bisa ubah jenis_keperluan
+OK - bu uut & super admin: bisa ubah jenis_keperluan
 
 OK - Sorting berdasarkan waktu masuk
 
@@ -18,5 +17,4 @@ OK - Unit dinamis
 
 tambah notifikasi
 
-hide keperuan ketika buku tamu
-tambah lainya
+OK - field keperluan hanya ditampilkan ketika memilih lainnya
