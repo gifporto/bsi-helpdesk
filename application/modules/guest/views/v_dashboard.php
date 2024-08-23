@@ -30,6 +30,20 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
                     </div>
                 </div>
                 <div class="row">
+
+                    <div class="form-group col-lg-12">
+                        <label class="text-dark require">Unit BSI</label>
+                        <select class="form-control" id="unit_bsi" name="unit_bsi" required>
+                            <option value="">Pilih Unit BSI</option>
+                            <?php foreach ($units as $unit) : ?>
+                                <option value="BSI <?= $unit->id ?>"><?= $unit->name ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="row" id="nama_instansi">
+
                     <div class="form-group col-lg-6">
                         <label class="text-dark require">Asal Instansi</label>
                         <select class="form-control" id="kategoriSelect" onchange="tampilkanDatas()" name="kategori"
@@ -40,19 +54,23 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>
+
                     <div class="form-group col-lg-6">
-                        <label class="text-dark require">Unit BSI</label>
-                        <select class="form-control" id="unit_bsi" name="unit_bsi" required>
-                            <option value="">Pilih Unit BSI</option>
-                            <?php foreach ($units as $unit) : ?>
-                            <option value="BSI <?= $unit->id ?>"><?= $unit->name ?></option>
-                            <?php endforeach ?>
+                        <label class="text-dark require">Jenis Keperluan</label>
+                        <select class="form-control" id="jenis_keperluan" name="jenis_keperluan" onchange="tampilkanKeperluan()" required>
+                            <option value="">Pilih Jenis Keperluan</option>
+                            <option value="Teknis">Teknis</option>
+                            <option value="Aduan">Aduan</option>
+                            <option value="Tamu">Tamu</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>
+
+
                 </div>
-                <div class="row" id="nama_instansi">
-                    <div id="v_internal" class="form-group col-lg-12" style="display: none;">
+                <div class="row">
+                    <div id="v_internal" class="form-group col-lg-6" style="display: none;">
                         <label class="text-dark">Instansi Internal</label>
                         <select id="internal" name="internal" class="form-control">
                             <option value="">Pilih Instansi Internal</option>
@@ -61,25 +79,12 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
                         </select>
                         <div class="invalid-feedback"></div>
                     </div>
-                    <div id="v_external" class="form-group col-lg-12" style="display: none;">
+                    <div id="v_external" class="form-group col-lg-6" style="display: none;">
                         <label class="text-dark">Instansi Eksternal</label>
                         <input id="external" name="external" class="form-control" type="text">
                         <div class="invalid-feedback"></div>
                     </div>
-                </div>
-                <div class="row">
-
-                    <div class="form-group col-lg-6">
-                        <label class="text-dark require">Jenis Keperluan</label>
-                        <select class="form-control" id="jenis_keperluan" name="jenis_keperluan" required>
-                            <option value="">Pilih Jenis Keperluan</option>
-                            <option value="Teknis">Teknis</option>
-                            <option value="Aduan">Aduan</option>
-                            <option value="Tamu">Tamu</option>
-                        </select>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6" style="display: none;" id="field-keperluan">
                         <label class="text-dark require">Keperluan</label>
                         <textarea class="form-control" name="keperluan" id="keperluan" rows="3"></textarea>
                         <div class="invalid-feedback"></div>
@@ -107,6 +112,16 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
         } else {
             internal.style.display = "none";
             external.style.display = "none";
+        }
+    }
+
+    function tampilkanKeperluan() {
+        var jenis_keperluan = document.getElementById("jenis_keperluan").value;
+        var keperluan = document.getElementById("field-keperluan");
+        if (jenis_keperluan === "Lainnya") {
+            keperluan.style.display = "block";
+        } else {
+            keperluan.style.display = "none";
         }
     }
 </script>
