@@ -1,20 +1,34 @@
 <!-- table -->
 <div class="col-lg-12">
+
+    <?php if ($this->session->flashdata('success')): ?>
+    <div class="alert alert-success">
+        <?php echo $this->session->flashdata('success'); ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?php echo $this->session->flashdata('error'); ?>
+    </div>
+    <?php endif; ?>
+
     <div class="card shadow-2">
         <div class="card-body">
-
             <div class="flexbox mb-20">
                 <div class="mb-2 d-flex justify-content-start">
                     <div class="form-group mr-1">
-                        <select id="unitFilter" data-provide="selectpicker" data-lang="en_US" title="Unit" class="form-control">
+                        <select id="unitFilter" data-provide="selectpicker" data-lang="en_US" title="Unit"
+                            class="form-control">
                             <option value="">Semua</option>
                             <?php foreach ($units as $unit) : ?>
-                                <option value="<?= $unit['name'] ?>"><?= $unit['name'] ?></option>
+                            <option value="<?= $unit['name'] ?>"><?= $unit['name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group mr-1">
-                        <select id="jenisKeperluanFilter" data-provide="selectpicker" data-lang="en_US" title="Jenis Keperluan" class="form-control">
+                        <select id="jenisKeperluanFilter" data-provide="selectpicker" data-lang="en_US"
+                            title="Jenis Keperluan" class="form-control">
                             <option value="">Semua</option>
                             <option value="Teknis">Teknis</option>
                             <option value="Aduan">Aduan</option>
@@ -29,8 +43,8 @@
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
-            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm" data-provide="datatables"
-                data-scroll-collapse="true" cellspacing="0">
+            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm"
+                data-provide="datatables" data-scroll-collapse="true" cellspacing="0">
                 <thead class="bg-color-primary1">
                     <tr>
                         <th class="font-weight-bold">Tanggal</th>
@@ -46,61 +60,62 @@
                 </thead>
                 <tbody>
                     <?php foreach ($guests as $guest) { ?>
-                        <tr data-unit="<?= $guest['unit_bsi'] ?>" data-jenis="<?= $guest['jenis_keperluan'] ?>">
-                            <?php
-                            $date = new DateTime($guest['created_at']);
-                            $formatted_date = $date->format('d F Y');
-                            $formatted_time = $date->format('H:i');
-                            $iso_date = $date->format(DateTime::ATOM);
-                            ?>
-                            <td>
-                                <?= $formatted_date ?>
-                            </td>
-                            <td>
-                                <?= $formatted_time ?>
-                            </td>
-                            <td><?= $guest['nama'] ?></td>
-                            <td><?= $guest['instansi'] ?></td>
-                            <td><?= $guest['unit_bsi'] ?></td>
-                            <td><?= $guest['jenis_keperluan'] ?></td>
-                            <td><?= $guest['keperluan'] ?></td>
-                            <td>
-                                <div class="media-right">
-                                    <button
-                                        class="btn btn-flat btn-sm btn-bold btn-round btn-info"><?= $guest['status'] ?></button>
-                                </div>
-                            </td>
-                            <td class="text-center d-flex">
-                                <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
-                                    <input type="hidden" name="id" value="<?= $guest['id'] ?>">
-                                    <input type="hidden" name="status" value="Proses">
-                                    <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
-                                    <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
-                                    <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
+                    <tr data-unit="<?= $guest['unit_bsi'] ?>" data-jenis="<?= $guest['jenis_keperluan'] ?>">
+                        <?php
+                        $date = new DateTime($guest['created_at']);
+                        $formatted_date = $date->format('d F Y');
+                        $formatted_time = $date->format('H:i');
+                        $iso_date = $date->format(DateTime::ATOM);
+                        ?>
+                        <td>
+                            <?= $formatted_date ?>
+                        </td>
+                        <td>
+                            <?= $formatted_time ?>
+                        </td>
+                        <td><?= $guest['nama'] ?></td>
+                        <td><?= $guest['instansi'] ?></td>
+                        <td><?= $guest['unit_bsi'] ?></td>
+                        <td><?= $guest['jenis_keperluan'] ?></td>
+                        <td><?= $guest['keperluan'] ?></td>
+                        <td>
+                            <div class="media-right">
+                                <button
+                                    class="btn btn-flat btn-sm btn-bold btn-round btn-info"><?= $guest['status'] ?></button>
+                            </div>
+                        </td>
+                        <td class="text-center d-flex">
+                            <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
+                                <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                <input type="hidden" name="status" value="Proses">
+                                <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
+                                <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
 
-                                    <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
-                                        <i class="fa fa-hourglass-1"></i>
-                                    </button>
-                                </form>
-                                <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
-                                    <input type="hidden" name="id" value="<?= $guest['id'] ?>">
-                                    <input type="hidden" name="status" value="Selesai">
-                                    <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
-                                    <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
-                                    <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
+                                <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
+                                    <i class="fa fa-hourglass-1"></i>
+                                </button>
+                            </form>
+                            <form action="<?php echo site_url('super/pelayanan/update_status'); ?>" method="post">
+                                <input type="hidden" name="id" value="<?= $guest['id'] ?>">
+                                <input type="hidden" name="status" value="Selesai">
+                                <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
+                                <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
+                                <input type="hidden" name="pesan"
+                                    value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
 
-                                    <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </form>
-                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal"
-                                    data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i
-                                        class="fa fa-commenting-o"></i></button>
-                                <button class="ml-1 btn btn-round btn-danger btn-square text-center"
-                                    onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i
-                                        class="fa fa-close"></i></button>
-                            </td>
-                        </tr>
+                                <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </form>
+                            <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal"
+                                data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i
+                                    class="fa fa-commenting-o"></i></button>
+                            <button class="ml-1 btn btn-round btn-danger btn-square text-center"
+                                onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i
+                                    class="fa fa-close"></i></button>
+                        </td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -109,42 +124,42 @@
 </div>
 
 <?php foreach ($guests as $guest) : ?>
-    <div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"
-        aria-labelledby="modalCreateLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createUserModalLabel">Kirim Pesan WhatsApp</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?php echo site_url('super/pelayanan/send_wa'); ?>" method="post">
-                    <div class="modal-body">
-                        <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
-                        <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>"
-                                readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="telp">Telp</label>
-                            <input type="text" class="form-control" name="telp" value="<?= $guest['telp'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="pesan">Pesan</label>
-                            <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary btn-round"
-                            data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
-                    </div>
-                </form>
+<div class="modal fade" id="modal_pesan_<?= $guest['id'] ?>" tabindex="-1" role="dialog"
+    aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createUserModalLabel">Kirim Pesan WhatsApp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form action="<?php echo site_url('super/pelayanan/send_wa'); ?>" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="redirect_to" value="super/pelayanan/index_respon">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" class="form-control" name="name" value="<?= $guest['nama'] ?>"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="telp">Telp</label>
+                        <input type="text" class="form-control" name="telp" value="<?= $guest['telp'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+                        <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary btn-round"
+                        data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-sm btn-round btn-custom">Kirim Pesan</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 <?php endforeach; ?>
 
 

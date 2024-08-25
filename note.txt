@@ -15,6 +15,6 @@ OK - Fitur filter unit dan jenis_keperluan
 
 OK - Unit dinamis
 
-tambah notifikasi
+OK - tambah notifikasi
 
 OK - field keperluan hanya ditampilkan ketika memilih lainnya

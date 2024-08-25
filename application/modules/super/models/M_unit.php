@@ -5,6 +5,7 @@ class M_unit extends CI_Model
 {
     public function get_units()
     {
+        $this->db->order_by('name', 'ASC');
         return $this->db->get('units')->result_array();
     }
 

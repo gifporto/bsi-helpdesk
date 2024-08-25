@@ -172,15 +172,23 @@ class Pelayanan extends CI_Controller
             $data = [
                 'jenis_keperluan' => $jenis_keperluan
             ];
-            $this->M_guest->update_guests($guest_id, $data); // Menggunakan guest_id untuk update
-            $this->session->set_flashdata('notification', 'Jenis keperluan berhasil diperbarui!');
-            $this->session->set_flashdata('alert_type', 'success');
+
+            // Cek apakah update berhasil
+            if ($this->M_guest->update_guests($guest_id, $data)) {
+                // Set flashdata untuk notifikasi sukses
+                $this->session->set_flashdata('success', 'Data berhasil diupdate.');
+            } else {
+                // Set flashdata untuk notifikasi gagal
+                $this->session->set_flashdata('error', 'Gagal mengupdate data.');
+            }
         } else {
-            $this->session->set_flashdata('notification', 'Gagal memperbarui jenis keperluan.');
-            $this->session->set_flashdata('alert_type', 'danger');
+            // Set flashdata untuk notifikasi gagal karena data tidak lengkap
+            $this->session->set_flashdata('error', 'Data tidak lengkap, tidak dapat melakukan update.');
         }
 
+        // Redirect ke halaman yang ditentukan
         redirect($redirect_to);
     }
+
 
 }

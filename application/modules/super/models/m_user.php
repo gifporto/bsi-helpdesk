@@ -42,6 +42,7 @@ class m_user extends CI_Model
         $this->db->from('users');
         $this->db->join('roles', 'roles.id = users.role_id', 'left');
         $this->db->join('units', 'units.id = users.unit_id', 'left');
+        $this->db->order_by('name', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }
