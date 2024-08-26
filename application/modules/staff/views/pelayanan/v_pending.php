@@ -37,7 +37,9 @@
                             <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
-                    <button id="filterBtn" class="btn btn-round btn-custom">Filter</button>
+                    <div class="form-group mr-1 d-flex align-self-center">
+                        <button id="filterBtn" class="btn btn-custom">Filter</button>
+                    </div>
                 </div>
 
                 <div class="ml-2">
