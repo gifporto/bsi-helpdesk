@@ -2,11 +2,11 @@
     <div class="row w-100">
         <div class="desktop-only col-lg-6 d-flex justify-content-center align-items-center">
             <div class="row justify-content-center align-items-center">
-                <div class="col-lg-12 text-center">
+                <a class="col-lg-12 text-center" href="<?= site_url('guest/dashboard') ?>">
                     <img class="mb-4 w-50 d-block mx-auto" src="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>">
                     <p class="text-login">Helpdesk BSI.</p>
-                    <p>Mencatat Ajuan Layanan.</p>
-                </div>
+                    <p class="text-dark">Mencatat Ajuan Layanan.</p>
+                </a>
             </div>
         </div>
 

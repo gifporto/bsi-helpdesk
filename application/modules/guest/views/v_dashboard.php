@@ -9,6 +9,11 @@ $linkWA = $this->agent->is_mobile() ? 'https://api.whatsapp.com/send?phone=' . $
 ?>
 
 <div class="col-12">
+    <a href="<?= site_url('guest/dashboard') ?>" class="d-flex justify-content-center mb-5">
+        <div class="m-1"><img src="<?= asset_path('/img/logo-hd-bsi.svg', '_theme_') ?>" alt="logo icon"
+                style="width: 32px;"></div>
+        <span class="text1 d-flex align-self-center">Helpdesk BSI.</span>
+    </a>
     <div class="card shadow-2">
         <form id="submissionForm" class="card-body" action="<?php echo site_url('guest/dashboard/store'); ?>" method="post">
             <h4 class="fw-500">Pengajuan Layanan</h4>
