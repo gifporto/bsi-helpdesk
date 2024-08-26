@@ -158,7 +158,6 @@ class Pelayanan extends CI_Controller
             $this->session->set_flashdata('alert_type', 'danger');
         }
 
-        // Pastikan redirect_to valid dan aman
         redirect($redirect_to);
     }
 
@@ -168,7 +167,13 @@ class Pelayanan extends CI_Controller
         $jenis_keperluan = $this->input->post('jenis_keperluan');
         $redirect_to = $this->input->post('redirect_to') ?? 'super/pelayanan/index_pending'; // Default redirect
 
-        if ($guest_id && $jenis_keperluan) {
+        if (empty($guest_id) || empty($jenis_keperluan)) {
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'memperbarui data',
+                'pesan' => 'Data tidak lengkap, tidak dapat melakukan update.'
+            ]);
+        } else {
             $data = [
                 'jenis_keperluan' => $jenis_keperluan
             ];
@@ -176,19 +181,25 @@ class Pelayanan extends CI_Controller
             // Cek apakah update berhasil
             if ($this->M_guest->update_guests($guest_id, $data)) {
                 // Set flashdata untuk notifikasi sukses
-                $this->session->set_flashdata('success', 'Data berhasil diupdate.');
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => true,
+                    'tindakan' => 'memperbarui data',
+                    'pesan' => 'Data berhasil diupdate.'
+                ]);
             } else {
                 // Set flashdata untuk notifikasi gagal
-                $this->session->set_flashdata('error', 'Gagal mengupdate data.');
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => false,
+                    'tindakan' => 'memperbarui data',
+                    'pesan' => 'Gagal mengupdate data.'
+                ]);
             }
-        } else {
-            // Set flashdata untuk notifikasi gagal karena data tidak lengkap
-            $this->session->set_flashdata('error', 'Data tidak lengkap, tidak dapat melakukan update.');
         }
 
         // Redirect ke halaman yang ditentukan
         redirect($redirect_to);
     }
+
 
 
 }
