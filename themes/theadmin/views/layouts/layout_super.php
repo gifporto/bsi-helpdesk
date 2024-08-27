@@ -90,7 +90,7 @@
 
                 <li class="menu-item <?= $page_active == 'unit' ? 'active' : '' ?>">
                     <a class="menu-link menu-color" href="<?= site_url('super/unit') ?>">
-                        <i class="bi bi-person-gear"></i>
+                    <i class="bi bi-building-fill-gear"></i>
                         <span class="title">Daftar Unit</span>
                     </a>
                 </li>
