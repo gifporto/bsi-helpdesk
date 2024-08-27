@@ -4,13 +4,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends APP_Controller
 {
 
-    private $module = 'staff';
+    private $module = 'super';
 
 
     public function __construct()
     {
         parent::__construct();
-        $this->template->set_layout('layout_staff')
+        $this->template->set_layout('layout_super')
             ->set_partial('modules_js', 'modules_js')
             ->set_partial('modules_css', 'modules_css');
         $this->asset->set_theme($this->config->item('theme'));
@@ -19,7 +19,7 @@ class Dashboard extends APP_Controller
             redirect('guest/dashboard/login');
         }
 
-        if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 3) {
+        if (!$this->session->userdata('logged_in') || $this->session->userdata('role_id') != 1) {
             redirect('guest/dashboard/login');
         }
     }

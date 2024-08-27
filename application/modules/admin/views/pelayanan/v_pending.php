@@ -92,11 +92,11 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <button class="btn btn-round btn-success btn-square text-center" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-round btn-success btn-square text-center mr-1" onclick="updateStatus(<?= $guest['id'] ?>, 'Selesai')" title="Selesai"><i class="fa fa-check"></i></button>
                                 <?php if ($guest['jenis_keperluan'] != 'Tamu') { ?>
-                                    <button class="btn btn-round btn-info btn-square text-center mx-2" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
+                                    <button class="btn btn-round btn-info btn-square text-center mx-1" onclick="updateStatus(<?= $guest['id'] ?>, 'Respon')" title="Respon"><i class="bi bi-hand-thumbs-up"></i></button>
                                 <?php } ?>
-                                <button class="btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
+                                <button class="btn btn-round btn-danger btn-square text-center ml-1" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                             </td>
                         </tr>
                     <?php } ?>

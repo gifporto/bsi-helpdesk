@@ -25,7 +25,7 @@ class Dashboard extends APP_Controller
     }
 
     public function index(){
-        $data['title'] = 'Dashboard Admin';
+        $data['title'] = 'Dashboard';
         $data['page_active'] = 'dashboard';
         $this->template->build($this->module . '/v_dashboard', $data);
     }

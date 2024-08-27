@@ -1,8 +1,18 @@
 <div class="col-lg-12">
 
+<div class="col-lg-12">
     <?php if ($this->session->flashdata('notif_message')): ?>
-        <?php html_notif($this->session->flashdata('notif_message')); ?>
+        <div id="notif-message">
+            <?php html_notif($this->session->flashdata('notif_message')); ?>
+        </div>
+        <script>
+            setTimeout(function() {
+                document.getElementById('notif-message').style.display = 'none';
+            }, 3000); // 3000ms = 3 detik
+        </script>
+    <?php $this->session->set_flashdata('notif_message', null); // Menghapus flashdata setelah ditampilkan ?>
     <?php endif; ?>
+</div>
 
     <div class="card shadow-2">
         <div class="card-body">
@@ -63,7 +73,7 @@
                             <td><?= $guest['instansi'] ?></td>
                             <td><?= $guest['unit_bsi'] ?></td>
                             <td>
-                                <a class="btn btn-flat btn-primary" data-toggle="modal" data-target="#modal_jenis_keperluan_<?= $guest['id'] ?>">
+                                <a class="btn btn-sm btn-outline btn-custom" data-toggle="modal" data-target="#modal_jenis_keperluan_<?= $guest['id'] ?>">
                                     <?= $guest['jenis_keperluan'] ?>
                                 </a>
                             </td>

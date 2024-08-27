@@ -88,7 +88,7 @@
     <div class="align-items-center">
 
       <div class="dropdown">
-        <div class="card-custom p-2" data-toggle="dropdown">
+        <div class="p-2" data-toggle="dropdown">
           <div class="d-flex justify-content-between">
             <div class="d-flex">
               <div class="justify-content-center align-content-center pr-2">
@@ -131,9 +131,6 @@
     <div class="topbar-left">
       <span class="topbar-btn sidebar-toggler"><i>&#9776;</i></span>
       <h2 h2 class="fw-700 topbar-title"><?= $title; ?></h2>
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-btn has-new"><i class="bi bi-bell"></i></span>
     </div>
   </header>
   <!-- END Topbar -->
