@@ -46,7 +46,6 @@ class Pelayanan extends APP_Controller
     {
         $id = $this->input->post('id');
         $status = $this->input->post('status');
-
         $target = $this->input->post('telp');
         $message = $this->input->post('pesan');
         $token = 'NBnFwCY+zX58mvYh-RtN';
@@ -56,20 +55,52 @@ class Pelayanan extends APP_Controller
 
         if ($id && $status) {
             $data = ['status' => $status];
-            $this->M_guest->update_guests($id, $data);
-            redirect($redirect_to);
+            if ($this->M_guest->update_guests($id, $data)) {
+                // Set flashdata untuk notifikasi sukses
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => true,
+                    'tindakan' => 'memperbarui status',
+                    'pesan' => 'Status berhasil diperbarui.'
+                ]);
+            } else {
+                // Set flashdata untuk notifikasi gagal
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => false,
+                    'tindakan' => 'memperbarui status',
+                    'pesan' => 'Gagal memperbarui status.'
+                ]);
+            }
         } else {
-            redirect($redirect_to);
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'memperbarui status',
+                'pesan' => 'Data tidak lengkap, tidak dapat memperbarui status.'
+            ]);
         }
+
+        redirect($redirect_to);
     }
+
 
     public function destroy()
     {
         $id = $this->input->post('id');
 
-        if ($this->M_guest->delete_item($id)) {
+        if ($id && $this->M_guest->delete_item($id)) {
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Data berhasil dihapus.'
+            ]);
             echo json_encode(['success' => true]);
         } else {
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Gagal menghapus data.'
+            ]);
             echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
         }
     }
@@ -122,7 +153,7 @@ class Pelayanan extends APP_Controller
         $data['page_active'] = 'pelayanan';
         $data['guests'] = $this->M_guest->get_guests_by_status('Pending');
         $data['units'] = $this->M_unit->get_units();
-        
+
         $this->template->build($this->module . '/pelayanan/v_pending', $data);
     }
 
@@ -158,20 +189,28 @@ class Pelayanan extends APP_Controller
         $target = $this->input->post('telp');
         $message = $this->input->post('pesan');
         $token = 'NBnFwCY+zX58mvYh-RtN';
-
         $redirect_to = $this->input->post('redirect_to');
 
         $response = send_message($target, $message, $token);
 
         if ($response['status'] == 'success') {
-            $this->session->set_flashdata('notification', 'Pesan berhasil dikirim!');
-            $this->session->set_flashdata('alert_type', 'success');
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'mengirim pesan WA',
+                'pesan' => 'Pesan berhasil dikirim!'
+            ]);
+            echo json_encode(['success' => true]);
         } else {
-            $this->session->set_flashdata('notification', 'Error: ' . $response['message']);
-            $this->session->set_flashdata('alert_type', 'danger');
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'mengirim pesan WA',
+                'pesan' => 'Error: ' . $response['message']
+            ]);
+            echo json_encode(['success' => false, 'message' => 'Error: ' . $response['message']]);
         }
 
         redirect($redirect_to);
     }
-
 }

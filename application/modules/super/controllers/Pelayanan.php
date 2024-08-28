@@ -183,15 +183,26 @@ class Pelayanan extends CI_Controller
         $response = send_message($target, $message, $token);
 
         if ($response['status'] == 'success') {
-            $this->session->set_flashdata('notification', 'Pesan berhasil dikirim!');
-            $this->session->set_flashdata('alert_type', 'success');
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'mengirim pesan WA',
+                'pesan' => 'Pesan berhasil dikirim!'
+            ]);
+            echo json_encode(['success' => true]);
         } else {
-            $this->session->set_flashdata('notification', 'Error: ' . $response['message']);
-            $this->session->set_flashdata('alert_type', 'danger');
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'mengirim pesan WA',
+                'pesan' => 'Error: ' . $response['message']
+            ]);
+            echo json_encode(['success' => false, 'message' => 'Error: ' . $response['message']]);
         }
 
         redirect($redirect_to);
     }
+
 
     public function update_jenis_keperluan()
     {

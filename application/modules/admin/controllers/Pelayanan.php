@@ -47,21 +47,49 @@ class Pelayanan extends APP_Controller
 
         // Update status di database
         $data = array('status' => $status);
-        $this->M_guest->update_guests($id, $data);
-
-        echo json_encode(['success' => true]);
+        if ($this->M_guest->update_guests($id, $data)) {
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'memperbarui status',
+                'pesan' => 'Status berhasil diperbarui.'
+            ]);
+            echo json_encode(['success' => true]);
+        } else {
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'memperbarui status',
+                'pesan' => 'Gagal memperbarui status.'
+            ]);
+            echo json_encode(['success' => false, 'message' => 'Gagal memperbarui status.']);
+        }
     }
+
 
     public function destroy()
     {
         $id = $this->input->post('id');
 
         if ($this->M_guest->delete_item($id)) {
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Data berhasil dihapus.'
+            ]);
             echo json_encode(['success' => true]);
         } else {
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Gagal menghapus data.'
+            ]);
             echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
         }
     }
+
 
 
     public function export()

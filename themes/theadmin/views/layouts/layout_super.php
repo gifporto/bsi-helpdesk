@@ -163,6 +163,7 @@
     <main class="main-container">
         <div class="main-content">
             <div class="row">
+                
                 <div class="col-lg-12">
                     <?php if ($this->session->flashdata('notif_message')): ?>
                         <div id="notif-message">

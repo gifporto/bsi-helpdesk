@@ -129,6 +129,22 @@
   <main class="main-container">
     <div class="main-content">
       <div class="row">
+
+        <div class="col-lg-12">
+          <?php if ($this->session->flashdata('notif_message')): ?>
+            <div id="notif-message">
+              <?php html_notif($this->session->flashdata('notif_message')); ?>
+            </div>
+            <script>
+              setTimeout(function() {
+                document.getElementById('notif-message').style.display = 'none';
+              }, 3000); // 3000ms = 3 detik
+            </script>
+            <?php $this->session->set_flashdata('notif_message', null); // Menghapus flashdata setelah ditampilkan 
+            ?>
+          <?php endif; ?>
+        </div>
+
         <?= $template['body']; ?>
       </div>
     </div>
