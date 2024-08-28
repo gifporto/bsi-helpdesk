@@ -95,6 +95,13 @@
                     </a>
                 </li>
 
+                <li class="menu-item <?= $page_active == 'laporan' ? 'active' : '' ?>">
+                    <a class="menu-link menu-color" href="<?= site_url('super/laporan') ?>">
+                    <i class="bi bi-building-fill-gear"></i>
+                        <span class="title">Laporan</span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
 
