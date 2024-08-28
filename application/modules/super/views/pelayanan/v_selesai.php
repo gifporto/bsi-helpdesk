@@ -82,7 +82,7 @@
                             <td>
                                 <div class="media-right">
                                     <button
-                                        class="btn btn-flat btn-sm btn-bold btn-round btn-success"><?= $guest['status'] ?>
+                                        class="mx-1 btn btn-flat btn-sm btn-bold btn-round btn-success"><?= $guest['status'] ?>
                                     </button>
                                 </div>
                             </td>

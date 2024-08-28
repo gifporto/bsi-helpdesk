@@ -89,12 +89,12 @@
                                     <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                     <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
 
-                                    <button class="btn btn-round btn-success btn-square text-center" title="Selesai">
+                                    <button class="mx-1 btn btn-round btn-success btn-square text-center" title="Selesai">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </form>
-                                <button class="btn btn-round btn-warning btn-square text-center mx-1" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
-                                <button class="btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
+                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="mx-1 btn btn-round btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                                 <!-- btn-round -->
                             </td>
                         </tr>

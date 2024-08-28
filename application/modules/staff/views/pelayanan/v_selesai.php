@@ -82,7 +82,7 @@
                                 </div>
                             </td>
                             <td class="text-center d-flex">
-                                <button class="mx-2 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
+                                <button class="mx-1 btn btn-round btn-warning btn-square text-center" data-toggle="modal" data-target="#modal_pesan_<?= $guest['id'] ?>" title="Pesan"><i class="fa fa-commenting-o"></i></button>
                             </td>
                         </tr>
                     <?php } ?>

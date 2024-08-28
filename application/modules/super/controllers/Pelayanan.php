@@ -31,7 +31,6 @@ class Pelayanan extends CI_Controller
     {
         $id = $this->input->post('id');
         $status = $this->input->post('status');
-
         $target = $this->input->post('telp');
         $message = $this->input->post('pesan');
         $token = 'NBnFwCY+zX58mvYh-RtN';
@@ -41,23 +40,56 @@ class Pelayanan extends CI_Controller
 
         if ($id && $status) {
             $data = ['status' => $status];
-            $this->M_guest->update_guests($id, $data);
-            redirect($redirect_to);
+            if ($this->M_guest->update_guests($id, $data)) {
+                // Set flashdata untuk notifikasi sukses
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => true,
+                    'tindakan' => 'memperbarui status',
+                    'pesan' => 'Status berhasil diperbarui.'
+                ]);
+            } else {
+                // Set flashdata untuk notifikasi gagal
+                $this->session->set_flashdata('notif_message', [
+                    'aksi' => false,
+                    'tindakan' => 'memperbarui status',
+                    'pesan' => 'Gagal memperbarui status.'
+                ]);
+            }
         } else {
-            redirect($redirect_to);
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'memperbarui status',
+                'pesan' => 'Data tidak lengkap, tidak dapat memperbarui status.'
+            ]);
         }
+
+        redirect($redirect_to);
     }
+
 
     public function destroy()
     {
         $id = $this->input->post('id');
 
         if ($id && $this->M_guest->delete_item($id)) {
+            // Set flashdata untuk notifikasi sukses
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => true,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Data berhasil dihapus.'
+            ]);
             echo json_encode(['success' => true]);
         } else {
+            // Set flashdata untuk notifikasi gagal
+            $this->session->set_flashdata('notif_message', [
+                'aksi' => false,
+                'tindakan' => 'menghapus data',
+                'pesan' => 'Gagal menghapus data.'
+            ]);
             echo json_encode(['success' => false, 'message' => 'Gagal menghapus data.']);
         }
     }
+
 
     public function export()
     {
@@ -199,7 +231,4 @@ class Pelayanan extends CI_Controller
         // Redirect ke halaman yang ditentukan
         redirect($redirect_to);
     }
-
-
-
 }

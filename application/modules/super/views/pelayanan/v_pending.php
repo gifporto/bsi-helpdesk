@@ -1,19 +1,5 @@
 <div class="col-lg-12">
 
-<div class="col-lg-12">
-    <?php if ($this->session->flashdata('notif_message')): ?>
-        <div id="notif-message">
-            <?php html_notif($this->session->flashdata('notif_message')); ?>
-        </div>
-        <script>
-            setTimeout(function() {
-                document.getElementById('notif-message').style.display = 'none';
-            }, 3000); // 3000ms = 3 detik
-        </script>
-    <?php $this->session->set_flashdata('notif_message', null); // Menghapus flashdata setelah ditampilkan ?>
-    <?php endif; ?>
-</div>
-
     <div class="card shadow-2">
         <div class="card-body">
             <div class="flexbox mb-20">
@@ -93,7 +79,7 @@
                                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sudah direspon! ^_^">
-                                        <button class="mr-1 btn btn-round btn-info btn-square text-center" title="Respon">
+                                        <button class="mx-1 btn btn-round btn-info btn-square text-center" title="Respon">
                                             <i class="bi bi-hand-thumbs-up"></i>
                                         </button>
                                     </form>
@@ -103,7 +89,7 @@
                                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
-                                        <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
+                                        <button class="mx-1 btn btn-round btn-primary btn-square text-center" title="Proses">
                                             <i class="fa fa-hourglass-1"></i>
                                         </button>
                                     </form>
@@ -114,7 +100,7 @@
                                     <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                                     <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                     <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
-                                    <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
+                                    <button class="mx-1 btn btn-round btn-success btn-square text-center" title="Selesai">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </form>
@@ -124,7 +110,7 @@
                                         <i class="fa fa-commenting-o"></i>
                                     </button>
                                 <?php } ?>
-                                <button class="ml-1 btn btn-round btn-danger btn-square text-center"
+                                <button class="mx-1 btn btn-round btn-danger btn-square text-center"
                                     onclick="destroy(<?= $guest['id'] ?>)" title="Hapus">
                                     <i class="fa fa-close"></i>
                                 </button>

@@ -92,7 +92,7 @@
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sudah direspon! ^_^">
 
-                                        <button class="mr-1 btn btn-round btn-info btn-square text-center" title="Respon">
+                                        <button class="mx-1 btn btn-round btn-info btn-square text-center" title="Respon">
                                             <i class="bi bi-hand-thumbs-up"></i>
                                         </button>
                                     </form>
@@ -104,7 +104,7 @@
                                         <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                         <input type="hidden" name="pesan" value="Pelayanan anda sedang diproses! ^_^">
 
-                                        <button class="mr-1 btn btn-round btn-primary btn-square text-center" title="Proses">
+                                        <button class="mx-1 btn btn-round btn-primary btn-square text-center" title="Proses">
                                             <i class="fa fa-hourglass-1"></i>
                                         </button>
                                     </form>
@@ -117,7 +117,7 @@
                                     <input type="hidden" name="telp" value="<?= $guest['telp'] ?>">
                                     <input type="hidden" name="pesan" value="Pelayanan anda sudah selesai! Terima Kasih ^_^">
 
-                                    <button class="mr-1 btn btn-round btn-success btn-square text-center" title="Selesai">
+                                    <button class="mx-1 btn btn-round btn-success btn-square text-center" title="Selesai">
                                         <i class="fa fa-check"></i>
                                     </button>
                                 </form>
@@ -130,7 +130,7 @@
 
                                 <?php } ?>
 
-                                <button class="ml-1 btn btn-round  btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
+                                <button class="mx-1 btn btn-round  btn-danger btn-square text-center" onclick="destroy(<?= $guest['id'] ?>)" title="Hapus"><i class="fa fa-close"></i></button>
                                 <!-- btn-round -->
                             </td>
                         </tr>
