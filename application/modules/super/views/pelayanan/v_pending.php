@@ -30,8 +30,8 @@
                             class="ml-2 bi bi-printer-fill"></i></a>
                 </div>
             </div>
-            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm"
-                data-scroll-collapse="true" cellspacing="0">
+            <table id="guestsTable" class="table table-separated table-striped table-responsive-sm" 
+                data-scroll-collapse="true" cellspacing="0" data-provide="datatables">
                 <thead class="bg-color-primary1">
                     <tr>
                         <th class="font-weight-bold">Tanggal</th>
