@@ -151,7 +151,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo site_url('super/pelayanan/update_jenis_keperluan'); ?>" method="post">
+                <form action="<?php echo site_url('super/pelayanan/send_wa'); ?>" method="post">
                     <div class="modal-body">
                         <input type="hidden" name="redirect_to" value="super/pelayanan/index_pending">
                         <div class="form-group">
