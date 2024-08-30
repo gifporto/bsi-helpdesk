@@ -97,7 +97,7 @@
 
                 <li class="menu-item <?= $page_active == 'laporan' ? 'active' : '' ?>">
                     <a class="menu-link menu-color" href="<?= site_url('super/laporan') ?>">
-                    <i class="bi bi-building-fill-gear"></i>
+                        <i class="bi bi-building-fill-gear"></i>
                         <span class="title">Laporan</span>
                     </a>
                 </li>
@@ -208,6 +208,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js">
     </script>
 
+    <!-- excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        function exportToExcel(tableId, fileName) {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.getElementById(tableId));
+            XLSX.utils.book_append_sheet(wb, ws, 'Data');
+            XLSX.writeFile(wb, fileName);
+        }
+    </script>
 
     <!-- filter  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
