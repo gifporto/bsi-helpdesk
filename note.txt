@@ -1,4 +1,9 @@
 http://localhost/bsi-helpdesk/index.php/seeder/index
+akses : http://localhost:8000/index.php/guest/login
+akun :
+- admin@example.com : admin1234
+- staff@example.com
+- super@example.com
 
 OK - super admin bisa approve
 OK - tambah respon
